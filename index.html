@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download Links</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Embedded Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjBjZGZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIxIDE1djRhMiAyIDAgMCAxLTIgMkg1YTIgMiAwIDAgMS0yLTJ2LTQiLz48cG9seWxpbmUgcG9pbnRzPSI3IDEwIDEyIDE1IDE3IDEwIi8+PGxpbmUgeDE9IjEyIiB5MT0iMTUiIHgyPSIxMiIgeTI9IjMiLz48L3N2Zz4="/>
+    <style>
+        /* All previous styles remain exactly the same */
+        :root {
+            --mica-background: rgba(32, 32, 32, 0.75);
+            --mica-border: rgba(255, 255, 255, 0.08);
+            --accent-color: #60cdff;
+            --hover-color: #86dbff;
+            --active-color: #40bdff;
+            --text-primary: rgba(255, 255, 255, 0.95);
+            --text-secondary: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: url('https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-bloom-stock-blue-black-background-3840x2400-5630.jpg') center/cover fixed;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(30px) saturate(180%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 40px;
+            position: relative;
+            border-radius: 24px;
+            border: 1px solid var(--mica-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 120px);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-bloom-stock-blue-black-background-3840x2400-5630.jpg') center/cover fixed;
+            filter: blur(20px);
+            z-index: -1;
+            margin: -30px;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--mica-background);
+            backdrop-filter: blur(40px) saturate(180%);
+            z-index: -1;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            list-style: none;
+            padding: 0;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .button-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 24px 32px;
+            border-radius: 16px;
+            border: 1px solid var(--mica-border);
+            transition: all 0.2s ease-in-out;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+            height: 80px;
+            width: 100%;
+        }
+
+        .button-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .button-link:hover {
+            background: rgba(96, 205, 255, 0.15);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-link:hover::before {
+            transform: translateX(100%);
+        }
+
+        .button-link:active {
+            transform: translateY(0);
+            background: rgba(96, 205, 255, 0.25);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .full-width .button-link {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: auto;
+            padding-top: 40px;
+            font-size: 14px;
+            position: relative;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                margin: 40px 20px;
+                padding: 30px;
+            }
+            
+            .button-grid {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .button-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .button-link {
+                height: 70px;
+                padding: 20px;
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+
+            .container {
+                margin: 20px;
+                min-height: calc(100vh - 40px);
+            }
+        }
+
+        .container::before {
+            box-shadow: inset 0 0 100px rgba(96, 205, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Download Links</h1>
+        <ul id="buttonGrid" class="button-grid">
+            <!-- Buttons will be generated here -->
+        </ul>
+        <div class="copyright">
+            <p>&copy; <span id="copyrightYear"></span> All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Define your buttons here - Easy to add, remove, or modify
+        const buttons = [
+            {
+                name: "7ZIP",
+                url: "https://www.7-zip.org/download.html"
+            },
+            {
+                name: "BleachBit",
+                url: "https://www.bleachbit.org/download"
+            },
+            {
+                name: "Free Download Manager",
+                url: "https://www.freedownloadmanager.org/download.htm"
+            },
+            {
+                name: "Intel® DSA",
+                url: "https://dsadata.intel.com/installer"
+            },
+            {
+                name: "Pot Player",
+                url: "https://potplayer.daum.net/"
+            },
+            {
+                name: "Sumatara PDF",
+                url: "https://www.sumatrapdfreader.org/download-free-pdf-viewer"
+            },
+            {
+                name: "Lenovo Vantage",
+                url: "https://apps.microsoft.com/detail/9wzdncrfj4mv?hl=en-us&gl=US"
+            },
+            {
+                name: "PowerToys",
+                url: "https://github.com/microsoft/PowerToys/releases/latest"
+            },
+            {
+                name: "Sumatara PDF Configuration",
+                url: "https://raw.githubusercontent.com/TheLegendaryPhoenix08/Personal/main/Sumatara%20Config.txt"
+            },
+            {
+                name: "New Software",
+                url: "https://example.com/new-software"
+            }
+        ];
+
+        // Function to create the button grid
+        function createButtonGrid() {
+            const grid = document.getElementById('buttonGrid');
+            grid.innerHTML = ''; // Clear existing buttons
+            
+            buttons.forEach((button, index) => {
+                const li = document.createElement('li');
+                
+                // Make the last button full-width only if total number of buttons is odd
+                if (index === buttons.length - 1 && buttons.length % 2 !== 0) {
+                    li.className = 'full-width';
+                }
+                
+                const link = document.createElement('a');
+                link.className = 'button-link';
+                link.textContent = button.name;
+                link.href = button.url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                
+                li.appendChild(link);
+                grid.appendChild(li);
+            });
+        }
+
+        // Set copyright year
+        document.getElementById("copyrightYear").textContent = new Date().getFullYear();
+
+        // Create the button grid when page loads
+        window.onload = createButtonGrid;
+    </script>
+</body>
+</html>
