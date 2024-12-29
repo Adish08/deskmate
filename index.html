@@ -142,18 +142,39 @@
             font-size: 0.9rem;
             color: var(--text-secondary);
         }
-
+        
         footer {
             text-align: center;
             margin-top: 3rem;
             padding: 1rem;
             color: var(--text-secondary);
         }
+
+        footer p {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }        
         .footer-link {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.2s ease;
             position: relative;
+            padding-bottom: 2px;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -241,8 +262,8 @@
                     <div class="software-name">PowerToys</div>
                     <div class="software-description">Windows utilities</div>
                 </a>
-                <a href="https://apps.microsoft.com/detail/9wzdncrfj4mv" class="software-item" target="_blank">
-                    <img src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=64" alt="Lenovo Vantage" class="software-icon">
+                <a href="https://apps.microsoft.com/detail/9nr5b8gvvm13" class="software-item" target="_blank">
+                    <img src="https://store-images.s-microsoft.com/image/apps.46785.13760829730430362.1d7a68fe-b22e-459c-8789-8b3a160d1b87.dc5e931d-38d0-40f5-88a4-aa7d9401a67a?h=253" alt="Lenovo Vantage" class="software-icon">
                     <div class="software-name">Lenovo Vantage</div>
                     <div class="software-description">System management</div>
                 </a>
