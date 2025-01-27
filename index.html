@@ -178,6 +178,21 @@
             width: 100%;
         }
 
+        .copy-command {
+        cursor: pointer;
+        position: relative;
+    }
+
+    .copy-command:hover::after {
+        content: attr(data-hover-text);
+        position: absolute;
+        bottom: -25px;
+        background: var(--mica-background);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+
         @media (max-width: 768px) {
             .categories-container {
                 grid-template-columns: 1fr;
@@ -349,11 +364,14 @@
                         <h2 class="category-title">Cracks</h2>
                     </div>
                     <div class="software-grid">
-                        <a href="irm https://get.activated.win | iex" class="software-item" target="_blank">
-                            <img src="https://img.icons8.com/m_rounded/512/FFFFFF/key.png" alt="Intel DSA" class="software-icon">
-                            <div class="software-name">Activate Windows</div>
-                            <div class="software-description">Never Reveal This SECRET!</div>
-                        </a>
+                        <a href="#" class="software-item copy-command" 
+                        onclick="navigator.clipboard.writeText('irm https://get.activated.win | iex'); event.preventDefault();"
+                        data-command="irm https://get.activated.win | iex">
+                         <img src="https://img.icons8.com/m_rounded/512/FFFFFF/key.png" alt="Activation Key" class="software-icon">
+                         <div class="software-name">Activate Windows</div>
+                         <div class="software-description">Never Reveal This SECRET!</div>
+                     </a>
+                 
                         <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Affinity%20Suite%20V2%20Patch.zip" class="software-item" target="_blank">
                             <img src="https://affinity.help/_assets/af_logo_white_pt_trans_rgb_noAffinity.png" alt="Intel DSA" class="software-icon">
                             <div class="software-name">Affinity Patch</div>
@@ -370,7 +388,7 @@
                             <div class="software-description">Let's patch Adobe CC</div>
                         </a>
                         <a href="https://www.vpnbook.com/#pptpvpn" class="software-item" target="_blank">
-                            <img src="" alt="Lenovo Vantage" class="software-icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Windows-defender.svg/1024px-Windows-defender.svg.png" alt="Lenovo Vantage" class="software-icon">
                             <div class="software-name">Free VPN</div>
                             <div class="software-description">But not privacy friendly!</div>
                         </a>
@@ -398,6 +416,20 @@
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('.copy-command').forEach(item => {
+        item.setAttribute('data-hover-text', 'Click to copy command'); // Default hover text
+        item.addEventListener('click', function () {
+            const command = this.dataset.command;
+            navigator.clipboard.writeText(command).then(() => {
+                this.setAttribute('data-hover-text', 'Copied to clipboard!'); // Update hover text
+                setTimeout(() => {
+                    this.setAttribute('data-hover-text', 'Click to copy command'); // Reset text after delay
+                }, 2000); // Reset after 2 seconds
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        });
+    });
     </script>
 </body>
 </html>
