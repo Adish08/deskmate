@@ -4,7 +4,7 @@
     <title>My Software Collection</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@700&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjBjZGZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNjY1djRhMiAyIDAgMCAxLTIgMkg1YTIgMiAwIDAgMS0yLTJ2LTQiLz48cG9seWxpbmUgcG9pbnRzPSI3IDEwIDEyIDE1IDE3IDEwIi8+PGxpbmUgeDE9IjEyIiB5MT0iMTUiIHgyPSIxMiIgeTI9IjMiLz48L3N2Zz4="/>
     <style>
         :root {
@@ -141,17 +141,17 @@
             font-family: 'outfit', sans-serif; /* Satoshi font for software name heading */
         }
 
-        /* Fix: Style the software name links */
-        .software-item .software-name a {
-            color: var(--text-primary); /* Set color to white */
-            text-decoration: none;     /* Remove underline */
-            display: block; /* Make the link fill the software-name div for better click area */
+        /* Style for the link wrapping the software item box */
+        .software-item-link {
+            text-decoration: none; /* Remove underline from the link */
+            color: inherit;       /* Inherit text color from parent */
+            display: contents;    /* Make the anchor behave as if it's not there for layout purposes */
         }
 
-        /* Optional: Style the hover state of the software name links if needed */
-        .software-item .software-name a:hover {
-            color: var(--text-primary); /* Keep the color white on hover */
-            text-decoration: none; /* Disable underline on hover */
+        .software-item-link:hover .software-item { /* Apply hover style to .software-item when .software-item-link is hovered */
+            background: rgba(96, 205, 255, 0.15);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
         }
 
 
@@ -235,64 +235,80 @@
                 <h2 class="category-title">Utilities</h2>
             </div>
             <div class="software-grid">
-                <div class="software-item">
-                    <img src="https://github.com/M2Team/NanaZip/raw/main/Assets/NanaZip.png" alt="NanaZip Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://apps.microsoft.com/detail/9n8g7tscl18r" target="_blank">NanaZip</a>
+                <a href="https://apps.microsoft.com/detail/9n8g7tscl18r" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://github.com/M2Team/NanaZip/raw/main/Assets/NanaZip.png" alt="NanaZip Logo" class="software-icon">
+                        <div class="software-name">
+                            NanaZip
+                        </div>
+                        <div class="software-description">File compression utility</div>
                     </div>
-                    <div class="software-description">File compression utility</div>
-                </div>
+                </a>
 
-                <div class="software-item">
-                    <img src="https://www.google.com/s2/favicons?domain=freedownloadmanager.org&sz=64" alt="Free Download Manager Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://www.freedownloadmanager.org/download.htm" target="_blank">Free Download Manager</a>
+                <a href="https://www.freedownloadmanager.org/download.htm" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://www.google.com/s2/favicons?domain=freedownloadmanager.org&sz=64" alt="Free Download Manager Logo" class="software-icon">
+                        <div class="software-name">
+                            Free Download Manager
+                        </div>
+                        <div class="software-description">Download manager</div>
                     </div>
-                    <div class="software-description">Download manager</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://raw.githubusercontent.com/marticliment/UniGetUI/refs/heads/main/media/Icon%20sizes/128.png" alt="UniGetUI Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://apps.microsoft.com/detail/xpfftq032ptphf" target="_blank">UniGetUI</a>
+                </a>
+                <a href="https://apps.microsoft.com/detail/xpfftq032ptphf" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://raw.githubusercontent.com/marticliment/UniGetUI/refs/heads/main/media/Icon%20sizes/128.png" alt="UniGetUI Logo" class="software-icon">
+                        <div class="software-name">
+                            UniGetUI
+                        </div>
+                        <div class="software-description">Software Updater</div>
                     </div>
-                    <div class="software-description">Software Updater</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://breaktimer.app/images/logo.svg" alt="Break Timer Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://github.com/tom-james-watson/breaktimer-app/releases/latest/download/BreakTimer.exe" target="_blank">Break Timer</a>
+                </a>
+                <a href="https://github.com/tom-james-watson/breaktimer-app/releases/latest/download/BreakTimer.exe" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://breaktimer.app/images/logo.svg" alt="Break Timer Logo" class="software-icon">
+                        <div class="software-name">
+                            Break Timer
+                        </div>
+                        <div class="software-description">Relax. Rest. & Stretch.</div>
                     </div>
-                    <div class="software-description">Relax. Rest. & Stretch.</div>
-                </div>
+                </a>
 
-                <div class="software-item">
-                    <img src="https://chaudharyacademy.com/wp-content/uploads/2020/04/google-input-tools-hindi-e1628264493216.png" alt="Google Hindi Input Tools Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Google%20Iinput%20Tools%20Setup.zip" target="_blank">Google Hindi Input Tools</a>
+                <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Google%20Iinput%20Tools%20Setup.zip" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://chaudharyacademy.com/wp-content/uploads/2020/04/google-input-tools-hindi-e1628264493216.png" alt="Google Hindi Input Tools Logo" class="software-icon">
+                        <div class="software-name">
+                            Google Hindi Input Tools
+                        </div>
+                        <div class="software-description">Hindi Typing? I am here!</div>
                     </div>
-                    <div class="software-description">Hindi Typing? I am here!</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://github.com/theJayTea/WritingTools/blob/main/Windows_and_Linux/icons/app_icon.png?raw=true" alt="Writing Tools Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://github.com/theJayTea/WritingTools/releases/latest" target="_blank">Writing Tools</a>
+                </a>
+                <a href="https://github.com/theJayTea/WritingTools/releases/latest" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://github.com/theJayTea/WritingTools/blob/main/Windows_and_Linux/icons/app_icon.png?raw=true" alt="Writing Tools Logo" class="software-icon">
+                        <div class="software-name">
+                            Writing Tools
+                        </div>
+                        <div class="software-description">The intelligence you keyboard always deserved! (don't forget chatgpt and claude /:)</div>
                     </div>
-                    <div class="software-description">The intelligence you keyboard always deserved! (don't forget chatgpt and claude /:)</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1ve26s.img?w=768&h=768&m=6" alt="Windhawk Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://ramensoftware.com/downloads/windhawk_setup.exe" target="_blank">Windhawk</a>
+                </a>
+                <a href="https://ramensoftware.com/downloads/windhawk_setup.exe" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1ve26s.img?w=768&h=768&m=6" alt="Windhawk Logo" class="software-icon">
+                        <div class="software-name">
+                            Windhawk
+                        </div>
+                        <div class="software-description">Curated mods for your Windows 11</div>
                     </div>
-                    <div class="software-description">Curated mods for your Windows 11</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://store-images.s-microsoft.com/image/apps.986.14089795918715087.7f26510c-c331-47c8-922e-e1286b39d96f.3e21babc-4137-4eae-bcc9-4c590a6f3266?h=253" alt="WinToys Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://apps.microsoft.com/detail/9p8ltpgcbzxd" target="_blank">WinToys</a>
+                </a>
+                <a href="https://apps.microsoft.com/detail/9p8ltpgcbzxd" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://store-images.s-microsoft.com/image/apps.986.14089795918715087.7f26510c-c331-47c8-922e-e1286b39d96f.3e21babc-4137-4eae-bcc9-4c590a6f3266?h=253" alt="WinToys Logo" class="software-icon">
+                        <div class="software-name">
+                            WinToys
+                        </div>
+                        <div class="software-description">Tweak Win 11, you are good to go!</div>
                     </div>
-                    <div class="software-description">Tweak Win 11, you are good to go!</div>
-                </div>
+                </a>
             </div>
         </div>
 
@@ -303,62 +319,78 @@
                 <h2 class="category-title">Media</h2>
             </div>
             <div class="software-grid">
-                <div class="software-item">
-                    <img src="https://github.com/huynhsontung/Screenbox/raw/main/Screenbox/Assets/StoreLogo.scale-400.png" alt="Screenbox Media Player Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://potplayer.daum.net/" target="_blank">Screenbox Media Player</a>
+                <a href="https://potplayer.daum.net/" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://github.com/huynhsontung/Screenbox/raw/main/Screenbox/Assets/StoreLogo.scale-400.png" alt="Screenbox Media Player Logo" class="software-icon">
+                        <div class="software-name">
+                            Screenbox Media Player
+                        </div>
+                        <div class="software-description">Media player bsed on VLC with Fluent UI</div>
                     </div>
-                    <div class="software-description">Media player bsed on VLC with Fluent UI</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://www.google.com/s2/favicons?domain=sumatrapdfreader.org&sz=64" alt="Sumatra PDF Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://www.sumatrapdfreader.org/download-free-pdf-viewer" target="_blank">Sumatra PDF</a>
+                </a>
+                <a href="https://www.sumatrapdfreader.org/download-free-pdf-viewer" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://www.google.com/s2/favicons?domain=sumatrapdfreader.org&sz=64" alt="Sumatra PDF Logo" class="software-icon">
+                        <div class="software-name">
+                            Sumatra PDF
+                        </div>
+                        <div class="software-description">PDF viewer, simple and elegant.</div>
                     </div>
-                    <div class="software-description">PDF viewer, simple and elegant.</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://img.utdstc.com/icon/9ba/595/9ba5955f00d11a10df0ab33fc8ba3ff69fbd8c42edde88788a93762e235dd41b:200" alt="Brother Printer Driver Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://download.brother.com/welcome/dlf105118/Y20A_C1_ULWL_PP-inst-E1.EXE" target="_blank">Brother Printer Driver</a>
+                </a>
+                <a href="https://download.brother.com/welcome/dlf105118/Y20A_C1_ULWL_PP-inst-E1.EXE" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://img.utdstc.com/icon/9ba/595/9ba5955f00d11a10df0ab33fc8ba3ff69fbd8c42edde88788a93762e235dd41b:200" alt="Brother Printer Driver Logo" class="software-icon">
+                        <div class="software-name">
+                            Brother Printer Driver
+                        </div>
+                        <div class="software-description">Brother: at your side</div>
                     </div>
-                    <div class="software-description">Brother: at your side</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2019/08/5d43d3a068a2e.png" alt="Canon Printer Driver Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://gdlp01.c-wss.com/gds/0/0100007670/02/win-g2000-1_1-n_mcd.exe" target="_blank">Canon Printer Driver</a>
+                </a>
+                <a href="https://gdlp01.c-wss.com/gds/0/0100007670/02/win-g2000-1_1-n_mcd.exe" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2019/08/5d43d3a068a2e.png" alt="Canon Printer Driver Logo" class="software-icon">
+                        <div class="software-name">
+                            Canon Printer Driver
+                        </div>
+                        <div class="software-description">The GM2000 series</div>
                     </div>
-                    <div class="software-description">The GM2000 series</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://store-images.s-microsoft.com/image/apps.46484.14318846362781107.472babb5-aec4-4502-a619-ffbe2ee169d0.019bf8b2-bfdc-4027-bd06-6aa8f0bc5b78?w=75" alt="Intel Graphics Command Center Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://file.garden/ZUZC9jg2XxuHNMIN/SDIO%20v1.13.6.773.zip" target="_blank">Intel® Graphics Command Center</a>
+                </a>
+                <a href="https://file.garden/ZUZC9jg2XxuHNMIN/SDIO%20v1.13.6.773.zip" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://store-images.s-microsoft.com/image/apps.46484.14318846362781107.472babb5-aec4-4502-a619-ffbe2ee169d0.019bf8b2-bfdc-4027-bd06-6aa8f0bc5b78?w=75" alt="Intel Graphics Command Center Logo" class="software-icon">
+                        <div class="software-name">
+                            Intel® Graphics Command Center
+                        </div>
+                        <div class="software-description">Tune your display output</div>
                     </div>
-                    <div class="software-description">Tune your display output</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://static.macupdate.com/products/59816/l/fontbase-logo.png?v=1667832929" alt="FontBase Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://fontba.se/downloads/windows" target="_blank">FontBase</a>
+                </a>
+                <a href="https://fontba.se/downloads/windows" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://static.macupdate.com/products/59816/l/fontbase-logo.png?v=1667832929" alt="FontBase Logo" class="software-icon">
+                        <div class="software-name">
+                            FontBase
+                        </div>
+                        <div class="software-description">Font management made easy.</div>
                     </div>
-                    <div class="software-description">Font management made easy.</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://github.com/FajoX1/fagramdesktop/raw/dev/Telegram/Resources/art/icon512@2x.png?raw=true" alt="FaGram Desktop Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://github.com/FajoX1/fagramdesktop/releases" target="_blank">FaGram Desktop</a>
+                </a>
+                <a href="https://github.com/FajoX1/fagramdesktop/releases" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://github.com/FajoX1/fagramdesktop/raw/dev/Telegram/Resources/art/icon512@2x.png?raw=true" alt="FaGram Desktop Logo" class="software-icon">
+                        <div class="software-name">
+                            FaGram Desktop
+                        </div>
+                        <div class="software-description">The Telegram client you always wanted</div>
                     </div>
-                    <div class="software-description">The Telegram client you always wanted</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://antibodysoftware-17031.kxcdn.com/images/wiztree445x.png" alt="WizTree Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://diskanalyzer.com/download" target="_blank">WizTree</a>
+                </a>
+                <a href="https://diskanalyzer.com/download" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://antibodysoftware-17031.kxcdn.com/images/wiztree445x.png" alt="WizTree Logo" class="software-icon">
+                        <div class="software-name">
+                            WizTree
+                        </div>
+                        <div class="software-description">Analyze Disk Space</div>
                     </div>
-                    <div class="software-description">Analyze Disk Space</div>
-                </div>
+                </a>
             </div>
         </div>
 
@@ -369,62 +401,78 @@
                 <h2 class="category-title">System Tools</h2>
             </div>
             <div class="software-grid">
-                <div class="software-item">
-                    <img src="https://www.google.com/s2/favicons?domain=bleachbit.org&sz=64" alt="BleachBit Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://www.bleachbit.org/download" target="_blank">BleachBit</a>
+                <a href="https://www.bleachbit.org/download" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://www.google.com/s2/favicons?domain=bleachbit.org&sz=64" alt="BleachBit Logo" class="software-icon">
+                        <div class="software-name">
+                            BleachBit
+                        </div>
+                        <div class="software-description">System cleaner</div>
                     </div>
-                    <div class="software-description">System cleaner</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://www.google.com/s2/favicons?domain=intel.com&sz=64" alt="Intel Driver & Support Assistant Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://dsadata.intel.com/installer" target="_blank">Intel® DSA</a>
+                </a>
+                <a href="https://dsadata.intel.com/installer" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://www.google.com/s2/favicons?domain=intel.com&sz=64" alt="Intel Driver & Support Assistant Logo" class="software-icon">
+                        <div class="software-name">
+                            Intel® DSA
+                        </div>
+                        <div class="software-description">Driver & support assistant</div>
                     </div>
-                    <div class="software-description">Driver & support assistant</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBRY0umJKt.GQbXbqRe3O0.M6NvfNbdeY0Zogy2G83ZFOwjvPW0LGHOo9EOtY6JbhjUAX7LD0dyivWObg4nprpmQ-&format=source&h=253" alt="PowerToys Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://github.com/microsoft/PowerToys/releases/latest" target="_blank">PowerToys</a>
+                </a>
+                <a href="https://github.com/microsoft/PowerToys/releases/latest" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBRY0umJKt.GQbXbqRe3O0.M6NvfNbdeY0Zogy2G83ZFOwjvPW0LGHOo9EOtY6JbhjUAX7LD0dyivWObg4nprpmQ-&format=source&h=253" alt="PowerToys Logo" class="software-icon">
+                        <div class="software-name">
+                            PowerToys
+                        </div>
+                        <div class="software-description">Windows utilities</div>
                     </div>
-                    <div class="software-description">Windows utilities</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://store-images.s-microsoft.com/image/apps.46785.13760829730430362.1d7a68fe-b22e-459c-8789-8b3a160d1b87.dc5e931d-38d0-40f5-88a4-aa7d9401a67a?h=253" alt="Lenovo Vantage Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://apps.microsoft.com/detail/9nr5b8gvvm13" target="_blank">Lenovo Vantage</a>
+                </a>
+                <a href="https://apps.microsoft.com/detail/9nr5b8gvvm13" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://store-images.s-microsoft.com/image/apps.46785.13760829730430362.1d7a68fe-b22e-459c-8789-8b3a160d1b87.dc5e931d-38d0-40f5-88a4-aa7d9401a67a?h=253" alt="Lenovo Vantage Logo" class="software-icon">
+                        <div class="software-name">
+                            Lenovo Vantage
+                        </div>
+                        <div class="software-description">System management</div>
                     </div>
-                    <div class="software-description">System management</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://www.glenn.delahoy.com/wp-content/uploads/2018/08/logo.png" alt="Snappy Driver Installer Origin Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://file.garden/ZUZC9jg2XxuHNMIN/SDIO%20v1.13.6.773.zip" target="_blank">Snappy Driver Installer Origin</a>
+                </a>
+                <a href="https://file.garden/ZUZC9jg2XxuHNMIN/SDIO%20v1.13.6.773.zip" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://www.glenn.delahoy.com/wp-content/uploads/2018/08/logo.png" alt="Snappy Driver Installer Origin Logo" class="software-icon">
+                        <div class="software-name">
+                            Snappy Driver Installer Origin
+                        </div>
+                        <div class="software-description">Favourite Driver Updater</div>
                     </div>
-                    <div class="software-description">Favourite Driver Updater</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://images.sftcdn.net/images/t_app-icon-m/p/50cabcb9-4d44-47bd-8cff-afe805b7f07e/620276404/bulk-crap-uninstaller-logo.png" alt="Bulk Crap Uninstaller Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://file.garden/ZUZC9jg2XxuHNMIN/SDIO%20v1.13.6.773.zip" target="_blank">Bulk Crap Uninstaller</a>
+                </a>
+                <a href="https://file.garden/ZUZC9jg2XxuHNMIN/SDIO%20v1.13.6.773.zip" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://images.sftcdn.net/images/t_app-icon-m/p/50cabcb9-4d44-47bd-8cff-afe805b7f07e/620276404/bulk-crap-uninstaller-logo.png" alt="Bulk Crap Uninstaller Logo" class="software-icon">
+                        <div class="software-name">
+                            Bulk Crap Uninstaller
+                        </div>
+                        <div class="software-description">Just Remove that. Simple :)</div>
                     </div>
-                    <div class="software-description">Just Remove that. Simple :)</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://apple.nextdns.io/_next/static/media/nextdns-logo.686ec0c5.svg" alt="NextDNS Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://johnwickx.notion.site/NextDNS-Setup-ad2528ea6c2640b1bf5c83e8d4b243d6#c16ffabb28514695b2a867f9993e0f56" target="_blank">NextDNS</a>
+                </a>
+                <a href="https://johnwickx.notion.site/NextDNS-Setup-ad2528ea6c2640b1bf5c83e8d4b243d6#c16ffabb28514695b2a867f9993e0f56" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://apple.nextdns.io/_next/static/media/nextdns-logo.686ec0c5.svg" alt="NextDNS Logo" class="software-icon">
+                        <div class="software-name">
+                            NextDNS
+                        </div>
+                        <div class="software-description">Block that annoying AD!</div>
                     </div>
-                    <div class="software-description">Block that annoying AD!</div>
-                </div>
-                <div class="software-item">
-                    <img src="https://icons.veryicon.com/png/o/business/vscode-program-item-icon/autohotkey.png" alt="AutoHotkey Logo" class="software-icon">
-                    <div class="software-name">
-                        <a href="https://www.autohotkey.com/download/ahk-v2.exe" target="_blank">AHK</a>
+                </a>
+                <a href="https://www.autohotkey.com/download/ahk-v2.exe" target="_blank" class="software-item-link">
+                    <div class="software-item">
+                        <img src="https://icons.veryicon.com/png/o/business/vscode-program-item-icon/autohotkey.png" alt="AutoHotkey Logo" class="software-icon">
+                        <div class="software-name">
+                            AHK
+                        </div>
+                        <div class="software-description">Automate Repetitive Strokes. Scripts? <a href="https://github.com/Adish08/AutoHotKey" class="inline-link">Click Here</a></div>
                     </div>
-                    <div class="software-description">Automate Repetitive Strokes. Scripts? <a href="https://github.com/Adish08/AutoHotKey" target="_blank" class="inline-link">Click Here</a></div>
-                </div>
+                </a>
             </div>
         </div>
                 <!-- Piracy Category -->
@@ -434,62 +482,78 @@
                         <h2 class="category-title">Cracks</h2>
                     </div>
                     <div class="software-grid">
-                        <div class="software-item">
+                        <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Microsoft%20Activation%20Script%20by%20Adish.ps1" target="_blank" class="software-item-link">
+                         <div class="software-item">
                          <img src="https://img.icons8.com/m_rounded/512/FFFFFF/key.png" alt="Key Icon" class="software-icon">
                          <div class="software-name">
-                            <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Microsoft%20Activation%20Script%20by%20Adish.ps1" target="_blank">Activate Windows & Office</a>
+                            Activate Windows & Office
                          </div>
                          <div class="software-description">Never Reveal This SECRET!</div>
                      </div>
-                        <div class="software-item">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAADcElEQVR4AWJwL/AhCYc1XuRBxqTqJ1rh0tprEmbZB1Pt8gGt1lN0XFEUBuDiva+17b7VZpzUtm3bim3btm3bTm1jN//q2rNuMncmfPiD0TdH++yEtBV3C2mVVjmtMq5KWW1Wu2W1Y9PgXgMD7lQP8L1Xq3DhQr7z/L2BtPRsCklAvUpabVJNiqYFoYAx4h6BgJyvFnvpXMx5qbbTmmSBa6zraI1jw3sF50ZLBY+WJV0GMX0mN2u1PW7VVrnfqqe7x+JpurKxXFDBsYEU3JtJ0bOlUjH0zVNMc6dAixuV+7zu1WbY3aolYF0G/V8ipBTyOk0x7O1BmSDmH6MyvVlLCEBEDiiFMagU9vp/Yt7/wmiFa9tmZDo3awhhtKugEFOOe0vKiR8REo5UsmaPr5QFP7pRTSKoXLAjTCXtM6mkf/bHmkrAvVeKx969UVUAUIhKgTv9P+IcLr9f6oHgHGJ3imGAEOWsL6Sa9aFItezX2DbgxeuVpTduVAHkSFCAUxT1k3Dw8VqeHnxrTBc2CNZLCir4RohK8Y8SUfDC9UoCighRTLfGGr3RDLUPPgyHHyMEwOkUyKgQxu6VhXF2r9S2QnFQNk4gtdq/bVP1p1gK3HetouRkK8YR4ihrnQF3LXlKm+bcJsBYSwbV60kcPHC9ggRhvNPgwTUGhDCsccWdMKXqTTLAna1I+wDef70iiTeLWLC+59fZR55StyKEYUZFd6nqtbLi9dfKSSzK18r+zDqbcUkW+GB3wMlLG50JAcjh0W7WjikWBfHBnFVXSwmZd6WEZl7Mp8lnMxqAcpniqwuY1qHI2tvbvQlhGJHAOx1KYEiBQoShcWczCBl0NJoG7PH93X+rU3CfFY+U+OqyOJP2XudwFD3aG0RiKHJ2nW0BHyvJAUblkAUx1m+jDQ3fbEu4HwPuVje7Xisim/OZZHIykRgVg7G+KJ8SEEEVkQchh09GU8jjRkJ871RSO1AURTDtotfTyDNpWowJR7T+cPBfILmmPynm+SspUB76eG+w+PXE4UYJCEaE4g0ISdL9IAUiDArRJ/uCszCyTrcYFdb0IN/sV6MAkwsyih2LUeEzutVEpRl+dQPMmBBEGMRuNTudbGl0PGFJj9vEJN33WwAz1h7E8cCXw1r1aiMMGA0Wg/gbrYn49PUQFI6Y051W/x8w/EAKcuaniQAAAABJRU5ErkJggg==" alt="Microsoft Office Logo" class="software-icon">
-                            <div class="software-name">
-                                <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Office%202024%20LTSC.zip" target="_blank">MS Office</a>
+                    </a>
+                        <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Office%202024%20LTSC.zip" target="_blank" class="software-item-link">
+                            <div class="software-item">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAADcElEQVR4AWJwL/AhCYc1XuRBxqTqJ1rh0tprEmbZB1Pt8gGt1lN0XFEUBuDiva+17b7VZpzUtm3bim3btm3bTm1jN//q2rNuMncmfPiD0TdH++yEtBV3C2mVVjmtMq5KWW1Wu2W1Y9PgXgMD7lQP8L1Xq3DhQr7z/L2BtPRsCklAvUpabVJNiqYFoYAx4h6BgJyvFnvpXMx5qbbTmmSBa6zraI1jw3sF50ZLBY+WJV0GMX0mN2u1PW7VVrnfqqe7x+JpurKxXFDBsYEU3JtJ0bOlUjH0zVNMc6dAixuV+7zu1WbY3aolYF0G/V8ipBTyOk0x7O1BmSDmH6MyvVlLCEBEDiiFMagU9vp/Yt7/wmiFa9tmZDo3awhhtKugEFOOe0vKiR8REo5UsmaPr5QFP7pRTSKoXLAjTCXtM6mkf/bHmkrAvVeKx969UVUAUIhKgTv9P+IcLr9f6oHgHGJ3imGAEOWsL6Sa9aFItezX2DbgxeuVpTduVAHkSFCAUxT1k3Dw8VqeHnxrTBc2CNZLCir4RohK8Y8SUfDC9UoCighRTLfGGr3RDLUPPgyHHyMEwOkUyKgQxu6VhXF2r9S2QnFQNk4gtdq/bVP1p1gK3HetouRkK8YR4ihrnQF3LXlKm+bcJsBYSwbV60kcPHC9ggRhvNPgwTUGhDCsccWdMKXqTTLAna1I+wDef70iiTeLWLC+59fZR55StyKEYUZFd6nqtbLi9dfKSSzK18r+zDqbcUkW+GB3wMlLG50JAcjh0W7WjikWBfHBnFVXSwmZd6WEZl7Mp8lnMxqAcpniqwuY1qHI2tvbvQlhGJHAOx1KYEiBQoShcWczCBl0NJoG7PH93X+rU3CfFY+U+OqyOJP2XudwFD3aG0RiKHJ2nW0BHyvJAUblkAUx1m+jDQ3fbEu4HwPuVje7Xisim/OZZHIykRgVg7G+KJ8SEEEVkQchh09GU8jjRkJ871RSO1AURTDtotfTyDNpWowJR7T+cPBfILmmPynm+SspUB76eG+w+PXE4UYJCEaE4g0ISdL9IAUiDArRJ/uCszCyTrcYFdb0IN/sV6MAkwsyih2LUeEzutVEpRl+dQPMmBBEGMRuNTudbGl0PGFJj9vEJN33WwAz1h7E8cCXw1r1aiMMGA0Wg/gbrYn49PUQFI6Y051W/x8w/EAKcuaniQAAAABJRU5ErkJggg==" alt="Microsoft Office Logo" class="software-icon">
+                                <div class="software-name">
+                                    MS Office
+                                </div>
+                                <div class="software-description">Who knows?</div>
                             </div>
-                            <div class="software-description">Who knows?</div>
-                        </div>
-                        <div class="software-item">
-                            <img src="https://i0.wp.com/www.xn--l3czcnwi1c5h.com/wp-content/uploads/2024/09/Adobe-GenP-icon.webp?fit=256%2C256&ssl=1" alt="Adobe GenP Logo" class="software-icon">
-                            <div class="software-name">
-                                <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Adobe-GenP-3.4.2-CGP.zip" target="_blank">Adobe GenP</a>
+                        </a>
+                        <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Adobe-GenP-3.4.2-CGP.zip" target="_blank" class="software-item-link">
+                            <div class="software-item">
+                                <img src="https://i0.wp.com/www.xn--l3czcnwi1c5h.com/wp-content/uploads/2024/09/Adobe-GenP-icon.webp?fit=256%2C256&ssl=1" alt="Adobe GenP Logo" class="software-icon">
+                                <div class="software-name">
+                                    Adobe GenP
+                                </div>
+                                <div class="software-description">Let's patch Adobe CC</div>
                             </div>
-                            <div class="software-description">Let's patch Adobe CC</div>
-                        </div>
-                        <div class="software-item">
-                            <img src="https://affinity.help/_assets/af_logo_white_pt_trans_rgb_noAffinity.png" alt="Affinity Products Logo" class="software-icon">
-                            <div class="software-name">
-                                <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Affinity%20Suite%20V2%20Patch.zip" target="_blank">Affinity Patch</a>
+                        </a>
+                        <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Affinity%20Suite%20V2%20Patch.zip" target="_blank" class="software-item-link">
+                            <div class="software-item">
+                                <img src="https://affinity.help/_assets/af_logo_white_pt_trans_rgb_noAffinity.png" alt="Affinity Products Logo" class="software-icon">
+                                <div class="software-name">
+                                    Affinity Patch
+                                </div>
+                                <div class="software-description">Adobe Alternative</div>
                             </div>
-                            <div class="software-description">Adobe Alternative</div>
-                        </div>
-                        <div class="software-item">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Windows-defender.svg/1024px-Windows-defender.svg.png" alt="VPN Icon" class="software-icon">
-                            <div class="software-name">
-                                <a href="https://www.vpnbook.com/#pptpvpn" target="_blank">Free VPN</a>
+                        </a>
+                        <a href="https://www.vpnbook.com/#pptpvpn" target="_blank" class="software-item-link">
+                            <div class="software-item">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Windows-defender.svg/1024px-Windows-defender.svg.png" alt="VPN Icon" class="software-icon">
+                                <div class="software-name">
+                                    Free VPN
+                                </div>
+                                <div class="software-description">But not privacy friendly!</div>
                             </div>
-                            <div class="software-description">But not privacy friendly!</div>
-                        </div>
-                        <div class="software-item">
-                            <img src="https://play-lh.googleusercontent.com/MO4jVMbqskWrBD7BDUiKkymLPDMlSFjnEE-JTCigWv6UcoENgAkSKr8bs0IvPs8Twv8" alt="CapCut Logo" class="software-icon">
-                            <div class="software-name">
-                                <a href="https://www.dropbox.com/scl/fi/fetmcp3yk9djttjp598e1/CapCut-Portable.rar?rlkey=fjw6fm7wini152sffdajr1tlm&st=u5n042k1&dl=1" target="_blank">CapCut Portable</a>
+                        </a>
+                        <a href="https://www.dropbox.com/scl/fi/fetmcp3yk9djttjp598e1/CapCut-Portable.rar?rlkey=fjw6fm7wini152sffdajr1tlm&st=u5n042k1&dl=1" target="_blank" class="software-item-link">
+                            <div class="software-item">
+                                <img src="https://play-lh.googleusercontent.com/MO4jVMbqskWrBD7BDUiKkymLPDMlSFjnEE-JTCigWv6UcoENgAkSKr8bs0IvPs8Twv8" alt="CapCut Logo" class="software-icon">
+                                <div class="software-name">
+                                    CapCut Portable
+                                </div>
+                                <div class="software-description">The most HYPED video editor.</div>
                             </div>
-                            <div class="software-description">The most HYPED video editor.</div>
-                        </div>
-                        <div class="software-item">
-                            <img src="https://www.startallback.com/clover.svg" alt="StartAllBack Logo" class="software-icon">
-                            <div class="software-name">
-                                <a href="https://www.startallback.com/download.php" target="_blank">StartAllBack</a>
+                        </a>
+                        <a href="https://www.startallback.com/download.php" target="_blank" class="software-item-link">
+                            <div class="software-item">
+                                <img src="https://www.startallback.com/clover.svg" alt="StartAllBack Logo" class="software-icon">
+                                <div class="software-name">
+                                    StartAllBack
+                                </div>
+                                <div class="software-description">Fix Windows 11 Dark Mode.</div>
                             </div>
-                            <div class="software-description">Fix Windows 11 Dark Mode.</div>
-                        </div>
-                        <div class="software-item">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAzFBMVEXkX4mhQ2HzrHr0rHrRLlf//zaSID3sdCDNKlD3uSOPHTjrch/HJkiLGzLpcB9/Fip3FSdODRnlZxznbh5ZXr9ITLPGscLhVxjmax3Hs8ZUWbo/Q6np2uLdTxXZ2dlOUrM6PaDu5e7SJgr////v6PFGSqs1OJfe3eHBCQnBCAgqLGsjJVmvp7LVytXUydKwqbQfpUQdoEENRRx3Lwx1Lgwen0EVby3cXhkblTwTaCraXBgZiTYRYCbYWhfZWhcOUyAKOxeyQhC1QhAAAACa8lFOAAAARHRSTlP/////////////////////////////////////////////////////////////////////////////////////////GoywdmgAAABnSURBVHgBXc3RCYAwEAPQa5Kr/jqCS7j/Eg7iBnKxFfRBjxACRZQGEs0RSkmZfgX6gUIS7SnYnTJHj3ytvuhXH+iL1H8RvUQsc7FniXgXj23LuTjHj5K8oPgBBotmDx36gC/RGuh4AyljBlHwz21YAAAAAElFTkSuQmCC" alt="WinRAR Logo" class="software-icon">
-                            <div class="software-name">
-                                <a href="https://www.rarlab.com/rar/winrar-x64-710b3.exe" target="_blank">WinRAR</a>
+                        </a>
+                        <a href="https://www.rarlab.com/rar/winrar-x64-710b3.exe" target="_blank" class="software-item-link">
+                            <div class="software-item">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAzFBMVEXkX4mhQ2HzrHr0rHrRLlf//zaSID3sdCDNKlD3uSOPHTjrch/HJkiLGzLpcB9/Fip3FSdODRnlZxznbh5ZXr9ITLPGscLhVxjmax3Hs8ZUWbo/Q6np2uLdTxXZ2dlOUrM6PaDu5e7SJgr////v6PFGSqs1OJfe3eHBCQnBCAgqLGsjJVmvp7LVytXUydKwqbQfpUQdoEENRRx3Lwx1Lgwen0EVby3cXhkblTwTaCraXBgZiTYRYCbYWhfZWhcOUyAKOxeyQhC1QhAAAACa8lFOAAAARHRSTlP/////////////////////////////////////////////////////////////////////////////////////////GoywdmgAAABnSURBVHgBXc3RCYAwEAPQa5Kr/jqCS7j/Eg7iBnKxFfRBjxACRZQGEs0RSkmZfgX6gUIS7SnYnTJHj3ytvuhXH+iL1H8RvUQsc7FniXgXj23LuTjHj5K8oPgBBotmDx36gC/RGuh4AyljBlHwz21YAAAAAElFTkSuQmCC" alt="WinRAR Logo" class="software-icon">
+                                <div class="software-name">
+                                    WinRAR
+                                </div>
+                                <div class="software-description">He never gets Old. Activate? <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/WinRAR%20Activator.bat" class="inline-link">Click Here</a></div>
                             </div>
-                            <div class="software-description">He never gets Old. Activate? <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/WinRAR%20Activator.bat" target="_blank" class="inline-link">Click Here</a></div>
-                        </div>
+                        </a>
                     </div>
                 </div>
     </div>
