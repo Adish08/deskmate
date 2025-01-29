@@ -193,6 +193,18 @@
         font-size: 0.8rem;
         white-space: nowrap;
 
+        .inline-link {
+        color: var(--accent-color);
+        text-decoration: underline;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+    }
+
+    .inline-link:hover {
+        color: var(--hover-color);
+        text-decoration: none;
+    }
+
         @media (max-width: 768px) {
             .categories-container {
                 grid-template-columns: 1fr;
@@ -207,7 +219,7 @@
 <body>
     <div class="header">
         <h1>🛠️ Adish's Software Collection</h1>
-        <p class="subtitle">A curated selection of essential tools and utilities</p>
+        <p class="subtitle">A curated selection of essential tools and utilities.</p>
     </div>
 
     <div class="categories-container">
@@ -331,7 +343,7 @@
                     <div class="software-description">Driver & support assistant</div>
                 </a>
                 <a href="https://github.com/microsoft/PowerToys/releases/latest" class="software-item" target="_blank">
-                    <img src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="PowerToys" class="software-icon">
+                    <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBRY0umJKt.GQbXbqRe3O0.M6NvfNbdeY0Zogy2G83ZFOwjvPW0LGHOo9EOtY6JbhjUAX7LD0dyivWObg4nprpmQ-&format=source&h=253" alt="PowerToys" class="software-icon">
                     <div class="software-name">PowerToys</div>
                     <div class="software-description">Windows utilities</div>
                 </a>
@@ -349,6 +361,11 @@
                     <img src="https://images.sftcdn.net/images/t_app-icon-m/p/50cabcb9-4d44-47bd-8cff-afe805b7f07e/620276404/bulk-crap-uninstaller-logo.png" alt="Lenovo Vantage" class="software-icon">
                     <div class="software-name">Bulk Crap Uninstaller</div>
                     <div class="software-description">Just Remove that. Simple :)</div>
+                </a>
+                <a href="https://johnwickx.notion.site/NextDNS-Setup-ad2528ea6c2640b1bf5c83e8d4b243d6#c16ffabb28514695b2a867f9993e0f56" class="software-item" target="_blank">
+                    <img src="https://apple.nextdns.io/_next/static/media/nextdns-logo.686ec0c5.svg" alt="Lenovo Vantage" class="software-icon">
+                    <div class="software-name">NextDNS</div>
+                    <div class="software-description">Block that annoying AD!</div>
                 </a>
                 <a href=https://www.autohotkey.com/download/ahk-v2.exe" class="software-item" target="_blank">
                     <img src="https://icons.veryicon.com/png/o/business/vscode-program-item-icon/autohotkey.png" alt="Lenovo Vantage" class="software-icon">
@@ -368,34 +385,28 @@
                         onclick="navigator.clipboard.writeText('irm https://get.activated.win | iex'); event.preventDefault();"
                         data-command="irm https://get.activated.win | iex">
                          <img src="https://img.icons8.com/m_rounded/512/FFFFFF/key.png" alt="Activation Key" class="software-icon">
-                         <div class="software-name">Activate Windows</div>
+                         <div class="software-name">Activate Windows & Office</div>
                          <div class="software-description">Never Reveal This SECRET!</div>
                      </a>
-                 
-                        <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Affinity%20Suite%20V2%20Patch.zip" class="software-item" target="_blank">
-                            <img src="https://affinity.help/_assets/af_logo_white_pt_trans_rgb_noAffinity.png" alt="Intel DSA" class="software-icon">
-                            <div class="software-name">Affinity Patch</div>
-                            <div class="software-description">Adobe Alternative</div>
-                        </a>
-                        <a href="https://github.com/microsoft/PowerToys/releases/latest" class="software-item" target="_blank">
-                            <img src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="PowerToys" class="software-icon">
-                            <div class="software-name">PowerToys</div>
-                            <div class="software-description">Windows utilities</div>
+                        <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Office%202024%20LTSC.zip" class="software-item" target="_blank">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAADcElEQVR4AWJwL/AhCYc1XuRBxqTqJ1rh0tprEmbZB1Pt8gGt1lN0XFEUBuDiva+17b7VZpzUtm3bim3btm3bTm1jN//q2rNuMncmfPiD0TdH++yEtBV3C2mVVjmtMq5KWW1Wu2W1Y9PgXgMD7lQP8L1Xq3DhQr7z/L2BtPRsCklAvUpabVJNiqYFoYAx4h6BgJyvFnvpXMx5qbbTmmSBa6zraI1jw3sF50ZLBY+WJV0GMX0mN2u1PW7VVrnfqqe7x+JpurKxXFDBsYEU3JtJ0bOlUjH0zVNMc6dAixuV+7zu1WbY3aolYF0G/V8ipBTyOk0x7O1BmSDmH6MyvVlLCEBEDiiFMagU9vp/Yt7/wmiFa9tmZDo3awhhtKugEFOOe0vKiR8REo5UsmaPr5QFP7pRTSKoXLAjTCXtM6mkf/bHmkrAvVeKx969UVUAUIhKgTv9P+IcLr9f6oHgHGJ3imGAEOWsL6Sa9aFItezX2DbgxeuVpTduVAHkSFCAUxT1k3Dw8VqeHnxrTBc2CNZLCir4RohK8Y8SUfDC9UoCighRTLfGGr3RDLUPPgyHHyMEwOkUyKgQxu6VhXF2r9S2QnFQNk4gtdq/bVP1p1gK3HetouRkK8YR4ihrnQF3LXlKm+bcJsBYSwbV60kcPHC9ggRhvNPgwTUGhDCsccWdMKXqTTLAna1I+wDef70iiTeLWLC+59fZR55StyKEYUZFd6nqtbLi9dfKSSzK18r+zDqbcUkW+GB3wMlLG50JAcjh0W7WjikWBfHBnFVXSwmZd6WEZl7Mp8lnMxqAcpniqwuY1qHI2tvbvQlhGJHAOx1KYEiBQoShcWczCBl0NJoG7PH93X+rU3CfFY+U+OqyOJP2XudwFD3aG0RiKHJ2nW0BHyvJAUblkAUx1m+jDQ3fbEu4HwPuVje7Xisim/OZZHIykRgVg7G+KJ8SEEEVkQchh09GU8jjRkJ871RSO1AURTDtotfTyDNpWowJR7T+cPBfILmmPynm+SspUB76eG+w+PXE4UYJCEaE4g0ISdL9IAUiDArRJ/uCszCyTrcYFdb0IN/sV6MAkwsyih2LUeEzutVEpRl+dQPMmBBEGMRuNTudbGl0PGFJj9vEJN33WwAz1h7E8cCXw1r1aiMMGA0Wg/gbrYn49PUQFI6Y051W/x8w/EAKcuaniQAAAABJRU5ErkJggg==" alt="PowerToys" class="software-icon">
+                            <div class="software-name">MS Office</div>
+                            <div class="software-description">Who knows?</div>
                         </a>
                         <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Adobe-GenP-3.4.2-CGP.zip" class="software-item" target="_blank">
                             <img src="https://i0.wp.com/www.xn--l3czcnwi1c5h.com/wp-content/uploads/2024/09/Adobe-GenP-icon.webp?fit=256%2C256&ssl=1" alt="Lenovo Vantage" class="software-icon">
                             <div class="software-name">Adobe GenP</div>
                             <div class="software-description">Let's patch Adobe CC</div>
                         </a>
+                        <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Affinity%20Suite%20V2%20Patch.zip" class="software-item" target="_blank">
+                            <img src="https://affinity.help/_assets/af_logo_white_pt_trans_rgb_noAffinity.png" alt="Intel DSA" class="software-icon">
+                            <div class="software-name">Affinity Patch</div>
+                            <div class="software-description">Adobe Alternative</div>
+                        </a>
                         <a href="https://www.vpnbook.com/#pptpvpn" class="software-item" target="_blank">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Windows-defender.svg/1024px-Windows-defender.svg.png" alt="Lenovo Vantage" class="software-icon">
                             <div class="software-name">Free VPN</div>
                             <div class="software-description">But not privacy friendly!</div>
-                        </a>
-                        <a href="https://johnwickx.notion.site/NextDNS-Setup-ad2528ea6c2640b1bf5c83e8d4b243d6#c16ffabb28514695b2a867f9993e0f56" class="software-item" target="_blank">
-                            <img src="https://apple.nextdns.io/_next/static/media/nextdns-logo.686ec0c5.svg" alt="Lenovo Vantage" class="software-icon">
-                            <div class="software-name">NextDNS</div>
-                            <div class="software-description">Block that annoying AD!</div>
                         </a>
                         <a href="https://www.dropbox.com/scl/fi/fetmcp3yk9djttjp598e1/CapCut-Portable.rar?rlkey=fjw6fm7wini152sffdajr1tlm&st=u5n042k1&dl=1" class="software-item" target="_blank">
                             <img src="https://play-lh.googleusercontent.com/MO4jVMbqskWrBD7BDUiKkymLPDMlSFjnEE-JTCigWv6UcoENgAkSKr8bs0IvPs8Twv8" alt="Lenovo Vantage" class="software-icon">
