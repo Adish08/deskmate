@@ -349,6 +349,15 @@ function renderCategories(filterText = '') {
                         // No need for stopPropagation() because the overlay is a sibling, not a parent.
                         // Clicking this link will just work.
                     });
+
+                    // 3. Handle Spotlight Effect (Mouse Move)
+                    cardElement.addEventListener('mousemove', (e) => {
+                        const rect = cardElement.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        cardElement.style.setProperty('--mouse-x', `${x}px`);
+                        cardElement.style.setProperty('--mouse-y', `${y}px`);
+                    });
                 }
             });
         }
@@ -368,6 +377,36 @@ function renderCategories(filterText = '') {
 document.addEventListener('DOMContentLoaded', () => {
     // Set Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Enhanced parallax tracking variables
+    let mouseX = 0;
+    let mouseY = 0;
+    let scrollY = 0;
+
+    // Enhanced Global Parallax Effect for Background Blobs (Mouse)
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (window.innerWidth / 2 - e.clientX) / 20;
+        mouseY = (window.innerHeight / 2 - e.clientY) / 20;
+        updateBlobPositions();
+    });
+
+    // Scroll-based parallax effect for depth
+    window.addEventListener('scroll', () => {
+        scrollY = window.scrollY;
+        updateBlobPositions();
+    });
+
+    // Combined parallax update function
+    function updateBlobPositions() {
+        const blobs = document.querySelectorAll('.blob');
+        blobs.forEach((blob, index) => {
+            const mouseFactor = (index + 1) * 0.7;
+            const scrollFactor = (index + 1) * 0.15;
+            const translateX = mouseX * mouseFactor;
+            const translateY = mouseY * mouseFactor + scrollY * scrollFactor;
+            blob.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        });
+    }
 
     // Render Categories
     renderCategories();
