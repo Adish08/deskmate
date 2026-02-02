@@ -150,7 +150,7 @@ const categories = [
             {
                 name: 'Snappy Driver Installer',
                 description: 'Driver Installer',
-                url: 'https://www.glenn.delahoy.com/snappy-driver-installer-origin/',
+                url: 'https://www.glenn.delahoy.com/downloads/sdio/SDIO_latest.zip',
                 icon: 'https://cdn.rawgit.com/Spunkie/chocolatey-packages/a189a397e2b7eecd723f317bfd5473bcb4da2ecf/automatic/sdio/icon.png'
             },
             {
