@@ -564,3 +564,9 @@ h1 {
         padding: 1.2rem;
     }
 }
+
+.view-counter {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
