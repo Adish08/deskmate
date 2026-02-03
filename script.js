@@ -306,7 +306,6 @@ function renderCategories(filterText = '') {
                                         src="${primUrl}" 
                                         alt="${app.name}" 
                                         class="software-icon" 
-                                        loading="lazy"
                                         onerror="this.onerror=null; this.src='${fallbackUrl}';"
                                     >
                                 </div>

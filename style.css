@@ -78,8 +78,6 @@ body::before {
     /* More diffused glow */
     opacity: 0.8;
     /* Slightly more visible */
-    will-change: transform;
-    /* Performance optimization */
 }
 
 .blob-1 {
@@ -352,6 +350,8 @@ h1 {
     position: relative;
     overflow: hidden;
     height: 100%;
+    transform: translateZ(0);
+    /* Force GPU acceleration for stable rendering */
 }
 
 .software-card::after {
