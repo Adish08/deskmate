@@ -51,7 +51,7 @@ const categories = [
             },
             {
                 name: 'Raycast',
-                description: 'Extendable Launcher',
+                description: 'Fast Productivity Launcher',
                 url: 'https://apps.microsoft.com/detail/9pfxxshc64h3',
                 icon: 'https://upload.wikimedia.org/wikipedia/en/f/f4/Raycast_App_Icon.png'
             }
@@ -259,7 +259,7 @@ function renderCategories(filterText = '') {
         const filteredApps = category.apps.filter(app =>
             app.name.toLowerCase().includes(filterText.toLowerCase()) ||
             app.description.toLowerCase().includes(filterText.toLowerCase())
-        );
+        ).sort((a, b) => a.name.localeCompare(b.name));
 
         if (filteredApps.length > 0) {
             const section = document.createElement('section');
