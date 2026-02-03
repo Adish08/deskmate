@@ -378,25 +378,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Enhanced parallax tracking variables
+    // Optimized Parallax with requestAnimationFrame
     let mouseX = 0;
     let mouseY = 0;
     let scrollY = 0;
+    let rafId = null;
 
-    // Enhanced Global Parallax Effect for Background Blobs (Mouse)
     document.addEventListener('mousemove', (e) => {
         mouseX = (window.innerWidth / 2 - e.clientX) / 20;
         mouseY = (window.innerHeight / 2 - e.clientY) / 20;
-        updateBlobPositions();
+        requestUpdate();
     });
 
-    // Scroll-based parallax effect for depth
     window.addEventListener('scroll', () => {
         scrollY = window.scrollY;
-        updateBlobPositions();
+        requestUpdate();
     });
 
-    // Combined parallax update function
+    function requestUpdate() {
+        if (!rafId) {
+            rafId = requestAnimationFrame(updateBlobPositions);
+        }
+    }
+
     function updateBlobPositions() {
         const blobs = document.querySelectorAll('.blob');
         blobs.forEach((blob, index) => {
@@ -406,6 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const translateY = mouseY * mouseFactor + scrollY * scrollFactor;
             blob.style.transform = `translate(${translateX}px, ${translateY}px)`;
         });
+        rafId = null;
     }
 
     // Render Categories
