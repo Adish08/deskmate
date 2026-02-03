@@ -26,13 +26,14 @@
 }
 
 html {
-    background-color: #000000;
-    /* Pure black background */
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at 50% 0%, #16162a 0%, #000000 100%);
+    min-height: 100vh;
 }
 
 body {
-    background-color: #000000;
-    /* Deep black base */
+    background-color: transparent;
+    /* Transparent to reveal background blobs */
     color: var(--text-primary);
     font-family: var(--font-body);
     min-height: 100vh;
