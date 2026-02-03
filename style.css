@@ -31,8 +31,8 @@ html {
 }
 
 body {
-    background-color: #000000;
-    /* Deep black base */
+    background-color: transparent;
+    /* Transparent to reveal background blobs */
     color: var(--text-primary);
     font-family: var(--font-body);
     min-height: 100vh;
