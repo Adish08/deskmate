@@ -211,13 +211,13 @@ const categories = [
                 name: 'StartAllBack',
                 description: 'Classic Start. <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/StartAllBack%20Activator.cmd" target="_blank" style="color:var(--primary-accent)">Activator?</a>',
                 url: 'https://www.startallback.com/download.php',
-                icon: 'https://www.startallback.com/clover.svg',
+                icon: 'https://www.softexia.com/wp-content/uploads/2024/01/StartAllBack-logo.png',
             },
             {
                 name: 'Winrar',
                 description: 'Classic Archiver. <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/WinRAR_Activator.bat" target="_blank" style="color:var(--primary-accent)">Activate?</a>',
                 url: 'https://www.rarlab.com/rar/winrar-x64-710b3.exe',
-                icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCXUy7vDS37NyVpOODkj9h21hpJkGahERH1w&s'
+                icon: 'https://www.rw-designer.com/icon-image/21764-256x256x32.png'
             },
             {
                 name: 'Google Input',
