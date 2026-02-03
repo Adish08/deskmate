@@ -10,8 +10,7 @@ const categories = [
                 name: 'NanaZip',
                 description: 'Modern 7-Zip fork',
                 url: 'https://apps.microsoft.com/detail/9n8g7tscl18r',
-                icon: 'nanazip', // Homarr slug
-                fallback: 'https://raw.githubusercontent.com/M2Team/NanaZip/main/Assets/NanaZip.png'
+                icon: 'https://raw.githubusercontent.com/M2Team/NanaZip/main/Assets/NanaZip.png',
             },
             {
                 name: 'FDM',
@@ -23,22 +22,15 @@ const categories = [
                 name: 'UniGetUI',
                 description: 'Winget UI Wrapper',
                 url: 'https://apps.microsoft.com/detail/xpfftq032ptphf',
-                icon: 'wingetui',
-                fallback: 'https://raw.githubusercontent.com/marticliment/UniGetUI/main/media/Icon%20sizes/128.png'
+                icon: 'https://raw.githubusercontent.com/marticliment/UniGetUI/main/media/Icon%20sizes/128.png',
             },
             {
                 name: 'Break Timer',
                 description: 'Relax. Rest. & Stretch.',
                 url: 'https://github.com/tom-james-watson/breaktimer-app/releases/latest/download/BreakTimer.exe',
-                icon: 'breaktimer',
-                fallback: 'https://breaktimer.app/images/logo.svg'
+                icon: 'https://breaktimer.app/images/logo.svg',
             },
-            {
-                name: 'Google Input',
-                description: 'Hindi Typing Tools',
-                url: 'https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Google%20Iinput%20Tools%20Setup.zip',
-                icon: 'google'
-            },
+
             {
                 name: 'Writing Tools',
                 description: 'AI Writing Assistant',
@@ -55,8 +47,13 @@ const categories = [
                 name: 'WinToys',
                 description: 'Tweak & Optimize',
                 url: 'https://apps.microsoft.com/detail/9p8ltpgcbzxd',
-                icon: 'wintoys',
-                fallback: 'https://store-images.s-microsoft.com/image/apps.986.14089795918715087.7f26510c-c331-47c8-922e-e1286b39d96f.3e21babc-4137-4eae-bcc9-4c590a6f3266'
+                icon: 'https://store-images.s-microsoft.com/image/apps.986.14089795918715087.7f26510c-c331-47c8-922e-e1286b39d96f.3e21babc-4137-4eae-bcc9-4c590a6f3266',
+            },
+            {
+                name: 'Raycast',
+                description: 'Extendable Launcher',
+                url: 'https://apps.microsoft.com/detail/9pfxxshc64h3',
+                icon: 'https://upload.wikimedia.org/wikipedia/en/f/f4/Raycast_App_Icon.png'
             }
         ]
     },
@@ -69,21 +66,20 @@ const categories = [
                 name: 'Screenbox',
                 description: 'Modern Media Player',
                 url: 'https://apps.microsoft.com/detail/9ntsnmsvcb5l',
-                icon: 'vlc', // Using VLC as reliable placeholder if custom fails
-                fallback: 'https://raw.githubusercontent.com/huynhsontung/Screenbox/main/Screenbox/Assets/StoreLogo.scale-400.png'
+                icon: 'https://raw.githubusercontent.com/huynhsontung/Screenbox/main/Screenbox/Assets/StoreLogo.scale-400.png',
+                // fallback: 'https://raw.githubusercontent.com/huynhsontung/Screenbox/main/Screenbox/Assets/StoreLogo.scale-400.png'
             },
             {
                 name: 'Foxit Reader',
                 description: 'Fast PDF Reader. Or <a href="https://www.sumatrapdfreader.org/download-free-pdf-viewer" target="_blank" style="color:var(--primary-accent)">Sumatra?</a>',
                 url: 'https://apps.microsoft.com/detail/xpfcg5nrkxqpkt',
-                icon: 'foxit-reader',
-                fallback: 'https://img.icons8.com/color/96/foxit-reader.png'
+                icon: 'https://img.icons8.com/color/96/foxit-reader.png',
             },
             {
                 name: 'Brother Driver',
                 description: 'Printer Drivers',
                 url: 'https://download.brother.com/welcome/dlf105118/Y20A_C1_ULWL_PP-inst-E1.EXE',
-                icon: 'brother'
+                icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/brother.png'
             },
             {
                 name: 'Canon Driver',
@@ -107,7 +103,7 @@ const categories = [
                 name: 'FaGram',
                 description: 'Telegram Client',
                 url: 'https://github.com/FajoX1/fagramdesktop/releases',
-                icon: 'telegram',
+                icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/telegram.png',
                 fallback: 'https://raw.githubusercontent.com/FajoX1/fagramdesktop/dev/Telegram/Resources/art/icon512%402x.png'
             },
             {
@@ -145,7 +141,7 @@ const categories = [
                 name: 'Lenovo Vantage',
                 description: 'Device Manager',
                 url: 'https://apps.microsoft.com/detail/9nr5b8gvvm13',
-                icon: 'lenovo'
+                icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/lenovo.png'
             },
             {
                 name: 'Snappy Driver Installer',
@@ -163,7 +159,7 @@ const categories = [
                 name: 'NextDNS',
                 description: 'DNS Protection',
                 url: 'https://johnwickx.notion.site/NextDNS-Setup-ad2528ea6c2640b1bf5c83e8d4b243d6',
-                icon: 'nextdns'
+                icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/nextdns.png'
             },
             {
                 name: 'AutoHotKey AHK',
@@ -182,8 +178,7 @@ const categories = [
                 name: 'MAS',
                 description: 'Microsoft Activation Scripts for Windows and Office',
                 url: '#',
-                icon: 'windows',
-                fallback: 'https://img.icons8.com/color/96/windows-11.png',
+                icon: 'https://img.icons8.com/color/96/windows-11.png',
                 action: 'copy',
                 copyText: 'irm https://get.activated.win | iex'
             },
@@ -191,7 +186,7 @@ const categories = [
                 name: 'Office 2024',
                 description: 'Full Office Suite',
                 url: 'https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Office%202024%20LTSC.zip',
-                icon: 'microsoft-office'
+                icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/microsoft-office.png'
             },
             {
                 name: 'GenP',
@@ -205,12 +200,7 @@ const categories = [
                 url: 'https://s3.amazonaws.com/outline-releases/client/windows/stable/Outline-Client.exe',
                 icon: 'https://upload.wikimedia.org/wikipedia/commons/6/60/Outline_VPN_icon.png'
             },
-            {
-                name: 'CapCut',
-                description: 'Video Editor',
-                url: 'https://www.dropbox.com/scl/fi/fetmcp3yk9djttjp598e1/CapCut-Portable.rar?rlkey=fjw6fm7wini152sffdajr1tlm&st=u5n042k1&dl=1',
-                icon: 'https://static.vecteezy.com/system/resources/previews/013/948/546/non_2x/capcut-logo-on-transparent-white-background-free-vector.jpg'
-            },
+
             {
                 name: 'Glary Utilities',
                 description: 'Optimize and Clean. Activator? <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Glary%20Utilites%20Keymaker-Jasi2169.zip" target="_blank" style="color:var(--primary-accent)">Click here</a>',
@@ -221,24 +211,26 @@ const categories = [
                 name: 'StartAllBack',
                 description: 'Classic Start. <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/StartAllBack%20Activator.cmd" target="_blank" style="color:var(--primary-accent)">Activator?</a>',
                 url: 'https://www.startallback.com/download.php',
-                icon: 'startallback', // Might fail
-                fallback: 'https://www.startallback.com/clover.svg'
+                icon: 'https://www.startallback.com/clover.svg',
             },
             {
                 name: 'Winrar',
                 description: 'Classic Archiver. <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/WinRAR_Activator.bat" target="_blank" style="color:var(--primary-accent)">Activate?</a>',
                 url: 'https://www.rarlab.com/rar/winrar-x64-710b3.exe',
                 icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCXUy7vDS37NyVpOODkj9h21hpJkGahERH1w&s'
+            },
+            {
+                name: 'Google Input',
+                description: 'Hindi Typing Tools',
+                url: 'https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Google%20Iinput%20Tools%20Setup.zip',
+                icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/google.png'
             }
         ]
     }
 ];
 
 function getIconUrl(app) {
-    const baseUrl = 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/';
-    // If it's a full URL, return it (for testing or legacy)
-    if (app.icon.startsWith('http')) return app.icon;
-    return `${baseUrl}${app.icon}.png`;
+    return app.icon;
 }
 
 function copyToClipboard(text, element) {
@@ -274,7 +266,6 @@ function renderCategories(filterText = '') {
             section.className = 'category-section';
 
             // Render Logic
-            // Render Logic
             section.innerHTML = `
                 <div class="category-header">
                     <i class='bx ${category.icon} category-title-icon'></i>
@@ -289,10 +280,6 @@ function renderCategories(filterText = '') {
                 const actionText = isCopyAction ? 'Copy' : 'Download';
                 const actionIcon = isCopyAction ? 'bx-copy' : 'bx-right-arrow-alt';
                 const arrowClass = isCopyAction ? '' : 'download-arrow';
-
-                // New Strategy: Always use DIV for container.
-                // If it's a URL action, put an invisible <a> tag covering the whole card (z-index 1).
-                // If description has links, put them on z-index 2.
 
                 const overlayLink = !isCopyAction
                     ? `<a href="${app.url}" target="_blank" class="card-overlay-link" aria-label="Download ${app.name}"></a>`
@@ -489,7 +476,6 @@ async function updateDynamicUrls() {
         asset => asset.name.toLowerCase().includes('x64_installer.exe')
     );
 
-    // 3. BleachBit (System) - Removed as per request (Automatic fetch unreliable)
 
     // 4. BCUninstaller (System) -> Setup exe
     await updateAppUrl(
