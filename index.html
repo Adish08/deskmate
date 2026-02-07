@@ -50,6 +50,7 @@
                 <nav class="header-nav">
                     <button id="appsBtn" class="nav-btn active">Apps</button>
                     <button id="tipsBtn" class="nav-btn">Tips & Tweaks</button>
+                    <button id="wallpapersBtn" class="nav-btn">Wallpapers</button>
                 </nav>
 
                 <div class="search-bar-container">
@@ -71,6 +72,19 @@
             </div>
             <div id="checklistItems" class="checklist-grid">
                 <!-- Checklist will be injected here via JS -->
+            </div>
+        </main>
+
+        <main id="wallpapersContainer" class="hidden">
+            <div class="tips-header">
+                <h2>Wallpapers Gallery</h2>
+                <p>Fresh looks in 4K.</p>
+            </div>
+            <div id="wallpapersGrid" class="software-grid">
+                <!-- Wallpapers will be injected here via JS -->
+                <div class="loading-spinner">
+                    <i class='bx bx-loader-alt bx-spin' style="font-size: 2rem; color: var(--primary-accent);"></i>
+                </div>
             </div>
         </main>
 

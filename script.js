@@ -433,15 +433,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tips Navigation
     const appsBtn = document.getElementById('appsBtn');
     const tipsBtn = document.getElementById('tipsBtn');
+    const wallpapersBtn = document.getElementById('wallpapersBtn');
     const categoriesContainer = document.getElementById('categoriesContainer');
     const tipsContainer = document.getElementById('tipsContainer');
+    const wallpapersContainer = document.getElementById('wallpapersContainer');
     const searchBar = document.querySelector('.search-bar-container');
 
     function showApps() {
         appsBtn.classList.add('active');
         tipsBtn.classList.remove('active');
+        wallpapersBtn.classList.remove('active');
         categoriesContainer.classList.remove('hidden');
         tipsContainer.classList.add('hidden');
+        wallpapersContainer.classList.add('hidden');
         searchBar.classList.remove('hidden');
         window.location.hash = '';
     }
@@ -449,8 +453,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function showTips() {
         tipsBtn.classList.add('active');
         appsBtn.classList.remove('active');
+        wallpapersBtn.classList.remove('active');
         tipsContainer.classList.remove('hidden');
         categoriesContainer.classList.add('hidden');
+        wallpapersContainer.classList.add('hidden');
         searchBar.classList.add('hidden');
         window.location.hash = 'tips';
 
@@ -460,23 +466,117 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function showWallpapers() {
+        wallpapersBtn.classList.add('active');
+        appsBtn.classList.remove('active');
+        tipsBtn.classList.remove('active');
+        wallpapersContainer.classList.remove('hidden');
+        categoriesContainer.classList.add('hidden');
+        tipsContainer.classList.add('hidden');
+        searchBar.classList.add('hidden');
+        window.location.hash = 'wallpapers';
+
+        // Only fetch if empty to prevent re-fetching
+        if (document.getElementById('wallpapersGrid').children.length <= 1) { // 1 because of loading spinner
+            fetchWallpapers();
+        }
+    }
+
     appsBtn.addEventListener('click', showApps);
     tipsBtn.addEventListener('click', showTips);
+    wallpapersBtn.addEventListener('click', showWallpapers);
 
     // Initial Route
     if (window.location.hash === '#tips') {
         showTips();
+    } else if (window.location.hash === '#wallpapers') {
+        showWallpapers();
     }
 
     // Handle back button
     window.addEventListener('hashchange', () => {
         if (window.location.hash === '#tips') showTips();
+        else if (window.location.hash === '#wallpapers') showWallpapers();
         else showApps();
     });
 
     // Checklist Initialization
     initTips();
 });
+
+async function fetchWallpapers() {
+    const container = document.getElementById('wallpapersGrid');
+    const repoOwner = 'Adish08';
+    const repoName = 'deskmate';
+    const path = 'Wallpapers';
+
+    try {
+        const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${path}`);
+        if (!response.ok) throw new Error('Failed to fetch wallpapers');
+
+        const data = await response.json();
+
+        // Filter for images
+        const images = data.filter(item =>
+            item.type === 'file' &&
+            /\.(jpg|jpeg|png|webp|gif)$/i.test(item.name)
+        );
+
+        // Clear loading spinner
+        container.innerHTML = '';
+
+        if (images.length === 0) {
+            container.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+                    <p style="color: var(--text-secondary);">No wallpapers found in the repository.</p>
+                </div>
+            `;
+            return;
+        }
+
+        images.forEach((img, index) => {
+            const card = document.createElement('div');
+            card.className = 'wallpaper-card';
+            card.style.animation = `fadeIn 0.5s ease-out ${index * 0.1}s forwards`;
+            card.style.opacity = '0'; // Start hidden for animation
+
+            // Format size
+            const sizeInMB = (img.size / (1024 * 1024)).toFixed(2);
+
+            card.innerHTML = `
+                <img src="${img.download_url}" alt="${img.name}" class="wallpaper-img" loading="lazy">
+                <div class="wallpaper-overlay">
+                    <div class="wallpaper-content">
+                        <span class="wallpaper-name" title="${img.name}">${img.name}</span>
+                        <span class="wallpaper-size">${sizeInMB} MB</span>
+                    </div>
+                    <a href="${img.download_url}" target="_blank" download class="wallpaper-download" title="Download">
+                        <i class='bx bx-download'></i>
+                    </a>
+                </div>
+            `;
+
+            // Allow opening full image on click (excluding download button)
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.wallpaper-download')) {
+                    window.open(img.download_url, '_blank');
+                }
+            });
+
+            container.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error('Error loading wallpapers:', error);
+        container.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; color: #ff6b6b; padding: 2rem;">
+                <i class='bx bx-error-circle' style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                <p>Failed to load wallpapers from GitHub.</p>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.8;">${error.message}</p>
+            </div>
+        `;
+    }
+}
 
 const tipItems = [
     "Calibrate Display color and Font",
