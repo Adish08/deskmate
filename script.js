@@ -19,12 +19,6 @@ const categories = [
                 icon: 'https://alternative.me/media/256/free-download-manager-icon-zs0dveq865g2qqtr-c.png'
             },
             {
-                name: 'UniGetUI',
-                description: 'Winget UI Wrapper',
-                url: 'https://apps.microsoft.com/detail/xpfftq032ptphf',
-                icon: 'https://raw.githubusercontent.com/marticliment/UniGetUI/main/media/Icon%20sizes/128.png',
-            },
-            {
                 name: 'Break Timer',
                 description: 'Relax. Rest. & Stretch.',
                 url: 'https://github.com/tom-james-watson/breaktimer-app/releases/latest/download/BreakTimer.exe',
@@ -54,6 +48,20 @@ const categories = [
                 description: 'Fast Productivity Launcher',
                 url: 'https://apps.microsoft.com/detail/9pfxxshc64h3',
                 icon: 'https://upload.wikimedia.org/wikipedia/en/f/f4/Raycast_App_Icon.png'
+            },
+            {
+                name: 'Winhance',
+                description: 'Optimize & Enhance Windows. <a href="https://file.garden/ZUZC9jg2XxuHNMIN/softwares/WinHance%20Configuration.winhance" target="_blank" style="color:var(--primary-accent)">Configuration? Click Here!</a>',
+                url: 'https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe',
+                icon: 'https://winhance.net/images/winhance-rocket.png'
+            },
+            {
+                name: 'CTT WinUtil',
+                description: 'Ultimate Windows Toolbox',
+                url: '#',
+                icon: 'https://mloads.com/uploads/posts/2025-05/winutil.webp',
+                action: 'copy',
+                copyText: 'irm "https://christitus.com/win" | iex'
             }
         ]
     },
@@ -111,6 +119,12 @@ const categories = [
                 description: 'Disk Space Analyzer',
                 url: 'https://diskanalyzer.com/download',
                 icon: 'https://antibodysoftware-17031.kxcdn.com/images/wiztree200x.png'
+            },
+            {
+                name: 'Custom Cursor',
+                description: 'Look Cool ;) af',
+                url: 'https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Custom%20Cursors.zip',
+                icon: 'https://wallpapers.com/images/hd/mickey-mouse-hand-gesture-cjz8ffhszi5irbh9-2.jpg'
             }
         ]
     },
@@ -166,6 +180,12 @@ const categories = [
                 description: 'Automation. <a href="https://github.com/Adish08/AutoHotKey" target="_blank" style="color:var(--primary-accent)">Scripts?</a>',
                 url: 'https://www.autohotkey.com/download/ahk-v2.exe',
                 icon: 'https://icons.veryicon.com/png/o/business/vscode-program-item-icon/autohotkey.png'
+            },
+            {
+                name: 'UniGetUI',
+                description: 'Winget UI Wrapper',
+                url: 'https://apps.microsoft.com/detail/xpfftq032ptphf',
+                icon: 'https://raw.githubusercontent.com/marticliment/UniGetUI/main/media/Icon%20sizes/128.png',
             }
         ]
     },
@@ -183,9 +203,9 @@ const categories = [
                 copyText: 'irm https://get.activated.win | iex'
             },
             {
-                name: 'Office 2024',
+                name: 'Office Installer',
                 description: 'Full Office Suite',
-                url: 'https://file.garden/ZUZC9jg2XxuHNMIN/softwares/Office%202024%20LTSC.zip',
+                url: 'https://github.com/YerongAI/Office-Tool/releases',
                 icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/microsoft-office.png'
             },
             {
@@ -409,7 +429,116 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // Dynamic Updates
     updateDynamicUrls();
+
+    // Tips Navigation
+    const appsBtn = document.getElementById('appsBtn');
+    const tipsBtn = document.getElementById('tipsBtn');
+    const categoriesContainer = document.getElementById('categoriesContainer');
+    const tipsContainer = document.getElementById('tipsContainer');
+    const searchBar = document.querySelector('.search-bar-container');
+
+    function showApps() {
+        appsBtn.classList.add('active');
+        tipsBtn.classList.remove('active');
+        categoriesContainer.classList.remove('hidden');
+        tipsContainer.classList.add('hidden');
+        searchBar.classList.remove('hidden');
+        window.location.hash = '';
+    }
+
+    function showTips() {
+        tipsBtn.classList.add('active');
+        appsBtn.classList.remove('active');
+        tipsContainer.classList.remove('hidden');
+        categoriesContainer.classList.add('hidden');
+        searchBar.classList.add('hidden');
+        window.location.hash = 'tips';
+
+        // Only render if empty to prevent re-animation
+        if (document.getElementById('checklistItems').children.length === 0) {
+            renderTips();
+        }
+    }
+
+    appsBtn.addEventListener('click', showApps);
+    tipsBtn.addEventListener('click', showTips);
+
+    // Initial Route
+    if (window.location.hash === '#tips') {
+        showTips();
+    }
+
+    // Handle back button
+    window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#tips') showTips();
+        else showApps();
+    });
+
+    // Checklist Initialization
+    initTips();
 });
+
+const tipItems = [
+    "Calibrate Display color and Font",
+    "Disable Core Isolation",
+    "Disable Language Bar",
+    "Disable MS Edge tabs in Multitasking under System",
+    "Disable Protected View of Microsoft Office",
+    "Disable Restartable Apps",
+    "Disable Sticky Keys",
+    "Disable Stuff in 'MSConfig' (Increase Number Of Processors Under Advanced Options)",
+    "Disable Touch Indicator",
+    "Download Windows Terminal and Set Windows Terminal As default Console Host",
+    "Enable Details Pane in File Explorer",
+    "Enable Multi-lingual Text Suggestions",
+    "Increase Cursor Pointer size",
+    "Increase Font Text Size",
+    "Install Hindi Keyboard",
+    "Performance Options aka Visual Effects (Environmental Variable)",
+    "Remove Optional Features",
+    "Rename The Recycle Bin :)",
+    "Turn on Device Discovery",
+    "Turn Throughput Booster 'On' and set Preferred Band to '5Ghz'"
+];
+
+function initTips() {
+    const today = new Date().toISOString().split('T')[0];
+    const lastDate = localStorage.getItem('tips_last_date');
+
+    if (lastDate !== today) {
+        localStorage.setItem('tips_last_date', today);
+        localStorage.removeItem('tips_checked');
+    }
+}
+
+function getCheckedTips() {
+    const checked = localStorage.getItem('tips_checked');
+    return checked ? JSON.parse(checked) : {};
+}
+
+function toggleTip(index, element) {
+    const checked = getCheckedTips();
+    checked[index] = !checked[index];
+    localStorage.setItem('tips_checked', JSON.stringify(checked));
+
+    if (element) {
+        element.classList.toggle('checked');
+    }
+}
+
+function renderTips() {
+    const container = document.getElementById('checklistItems');
+    const checked = getCheckedTips();
+
+    container.innerHTML = tipItems.map((tip, index) => `
+        <div class="checklist-item ${checked[index] ? 'checked' : ''}" onclick="toggleTip(${index}, this)">
+            <div class="custom-checkbox">
+                <i class='bx bx-check'></i>
+            </div>
+            <span>${tip}</span>
+        </div>
+    `).join('');
+}
 
 async function updateDynamicUrls() {
     // Helper to update app URLs from GitHub releases
@@ -497,5 +626,21 @@ async function updateDynamicUrls() {
             const name = asset.name.toLowerCase();
             return name.includes('genp') && name.endsWith('.zip') && !name.includes('source');
         }
+    );
+
+    // 6. Winhance (Utilities) -> Installer exe
+    await updateAppUrl(
+        'memstechtips/Winhance',
+        'Winhance',
+        'utilities',
+        asset => asset.name.toLowerCase().includes('installer.exe')
+    );
+
+    // 7. Office Installer (Activators) -> Zip
+    await updateAppUrl(
+        'YerongAI/Office-Tool',
+        'Office Installer',
+        'activators',
+        asset => asset.name.toLowerCase().endsWith('.zip') && !asset.name.toLowerCase().includes('arm64')
     );
 }

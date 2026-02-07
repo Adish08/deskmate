@@ -47,6 +47,11 @@
                 </div>
                 <p class="subtitle">The ultimate starter pack for your fresh Windows install.</p>
 
+                <nav class="header-nav">
+                    <button id="appsBtn" class="nav-btn active">Apps</button>
+                    <button id="tipsBtn" class="nav-btn">Tips & Tweaks</button>
+                </nav>
+
                 <div class="search-bar-container">
                     <i class='bx bx-search search-icon'></i>
                     <input type="text" id="searchInput" placeholder="Search for apps..." autocomplete="off">
@@ -57,6 +62,16 @@
 
         <main id="categoriesContainer">
             <!-- Categories will be injected here via JS -->
+        </main>
+
+        <main id="tipsContainer" class="hidden">
+            <div class="tips-header">
+                <h2>Windows Optimization Checklist</h2>
+                <p>Just do it.</p>
+            </div>
+            <div id="checklistItems" class="checklist-grid">
+                <!-- Checklist will be injected here via JS -->
+            </div>
         </main>
 
         <footer class="main-footer">
