@@ -544,7 +544,7 @@ async function fetchWallpapers() {
             const sizeInMB = (img.size / (1024 * 1024)).toFixed(2);
 
             card.innerHTML = `
-                <img src="${img.download_url}" alt="${img.name}" class="wallpaper-img" loading="lazy">
+                <img src="https://wsrv.nl/?url=${encodeURIComponent(img.download_url)}&w=400&q=50" alt="${img.name}" class="wallpaper-img" loading="lazy">
                 <div class="wallpaper-overlay">
                     <div class="wallpaper-content">
                         <span class="wallpaper-name" title="${img.name}">${img.name}</span>
