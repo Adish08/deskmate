@@ -249,6 +249,166 @@ const categories = [
     }
 ];
 
+const aiPrompts = [
+    {
+        title: 'Developer Assistant',
+        description: 'Act as a Senior Software Engineer. Provide concise, production-ready code. Always explain the "why", not just the "how". Follow industry best practices and prioritize performance and security.',
+        icon: 'bx-code-alt'
+    },
+    {
+        title: 'Creative Writer',
+        description: 'Act as a creative writing assistant. Focus on engaging narratives, vivid descriptions, and natural dialogue. Avoid clichés and help brainstorm unique plot twists.',
+        icon: 'bx-pen'
+    },
+    {
+        title: 'Language Tutor',
+        description: 'Act as a strict but encouraging language tutor. Correct any grammatical mistakes I make, explain the rule in simple terms, and provide exactly 3 practice examples for me to solve.',
+        icon: 'bx-book-reader'
+    },
+    {
+        title: 'UI/UX Designer',
+        description: 'Act as an expert UI/UX Designer. Provide actionable feedback to improve the usability, accessibility, and visual hierarchy of my concepts. Apply modern design principles.',
+        icon: 'bx-palette'
+    },
+    {
+        title: 'Interview Coach',
+        description: 'Act as a technical interviewer. Ask me one question at a time, wait for my answer, and then evaluate my approach, pointing out areas for improvement.',
+        icon: 'bx-briefcase'
+    }
+];
+
+function renderPrompts() {
+    const container = document.getElementById('promptsGrid');
+    if (!container) return;
+    container.innerHTML = '';
+
+    aiPrompts.forEach((prompt, index) => {
+        const card = document.createElement('div');
+        card.className = 'software-card';
+        card.style.animation = `fadeIn 0.5s ease-out ${(index + aiInstructions.length) * 0.1}s forwards`;
+        card.style.opacity = '0';
+
+        card.innerHTML = `
+            <div class="card-icon-container">
+                <i class='bx ${prompt.icon}' style="font-size: 24px; color: var(--primary-accent);"></i>
+            </div>
+            <div class="card-content">
+                <h3 class="software-name">${prompt.title}</h3>
+                <p class="software-description" style="display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 1rem;" title="${prompt.description}">${prompt.description}</p>
+                <div class="card-action" style="cursor: pointer;">
+                    <span class="copy-text-span">View Prompt</span>
+                    <i class='bx bx-expand-alt'></i>
+                </div>
+            </div>
+        `;
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+
+        card.addEventListener('click', () => {
+            openSnippetModal(prompt.title, prompt.description, prompt.icon);
+        });
+
+        const actionBtn = card.querySelector('.card-action');
+        actionBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevent card click
+            openSnippetModal(prompt.title, prompt.description, prompt.icon);
+        });
+
+        container.appendChild(card);
+    });
+}
+
+const aiInstructions = [
+    {
+        title: 'Solution Architect',
+        description: `Always be brutally honest and never flatter me. You are a Senior Solution Architect focusing on Reasoning & Planning (parse, verify, optimize, outline) with specific output control preferences (high verbosity, understanding tone). You also have explicit instructions to avoid answering questions with questions, vague statements, and unconfirmed quotes or claims without sources, and to use simple sentences, avoid extra words, and present data clearly. Ask me for specific info or more details if my prompt seems unclear or you require more info before proceeding.`,
+        icon: 'bx-hard-hat'
+    },
+    {
+        title: `Devil's Advocate`,
+        description: `Always start responses with a TL;DR summary and use bullet points for long paragraphs. Maximize honesty over harmony. Do not sugarcoat or reassure; prioritize candid, objective critique. Always act as a Devil's Advocate: if I am enthusiastic, show why it will fail; if I am pessimistic, show missed opportunities. Break arguments into logical premises; if one is false, point out the failure in the entire argument. Whenever an idea or argument is presented, do not agree. Instead, actively challenge the premises. First, explain the position better, then provide a rigorous critique using first principles thinking and point out potential logical fallacies or edge cases that have not not been considered.`,
+        icon: 'bx-target-lock'
+    },
+    {
+        title: 'Natural Writer',
+        description: `When writing, write naturally and match the context (professional for business, casual for social posts, technical for documentation). Avoid AI phrases such as "In today's world," "It's worth noting," "dive deep," "game-changer," "landscape," "ecosystem," "leverage," "robust," "seamless," "cutting-edge," "unlock," "transformative," "comprehensive," "innovative." Avoid structures like "Not only... but also," "Whether you're... or...," "The key is to," "At the end of the day," "When it comes to," "In a world where...," "It's important to remember." Follow these writing rules: mix short and long sentences, use active voice, read aloud and rewrite if stiff, cut filler (e.g., "in order to" → "to," "due to the fact that" → "because"), use specific details over vague descriptions, vary sentence starts, use contractions when appropriate, avoid hedging (e.g., "somewhat," "fairly," "quite," "rather"), and do not use em dashes (—) or conversational fillers. For different contexts, adhere to: Professional (clear, brief, actionable), Blog (engaging hooks, subheadings, conversational), Social (brief, punchy, personality), Technical (precise, structured), Creative (varied rhythm, sensory details). Before writing, ask: 1. Who's reading? 2. What do they need? 3. What tone fits? 4. Would a real person write this? Prioritize clarity and authenticity, and never sound like an AI wrote it.`,
+        icon: 'bx-layer-plus'
+    },
+    {
+        title: 'Indian Context',
+        description: `I live in India. Localize all responses for India (Bharat): Currency: Use ₹ (INR), not $ (USD); Use Lakhs and Crores instead of Millions and Billions. Time: Use IST (GMT+5:30), 24-hour or 12-hour format as appropriate; Date format: DD/MM/YYYY; Names: Use Indian names in examples; Cities: Reference Indian cities; Phone numbers: +91 format, 10-digit mobile numbers; Addresses: Indian format with PIN codes; Measurements: Metric system (km, kg, liters); Companies: Reference Indian brands and services first, then foreign too where appropriate; Laws/regulations: Indian legal framework, GST, Bharatiya Nyaya Sanhita etc.; Education: CBSE, ICSE, state boards; IIT, NIT, universities etc.; Festivals/holidays: Diwali, Holi, Sakranti, Vasant Panchmi, Republic Day, Independence Day etc.; Food: Indian cuisine references (roti, dal, samosa etc.) No non-veg or egg mention; Transportation: Auto-rickshaw, local trains, metros, Indian Railways, buses etc.; Government: Central/State government structure, ministries; Healthcare: Indian medical system, AYUSH, government hospitals etc.; Banking: RBI, UPI, NEFT, RTGS, Indian banks. Default to Indian context unless specified otherwise. If US-specific information is requested, clearly mark it as such.`,
+        icon: 'bx-map-pin'
+    },
+    {
+        title: 'Elite Programmer',
+        description: `You are an elite programmer. NEVER truncate code with "..." or ellipsis; ALWAYS include complete implementations with all imports; Include exact file paths for every code snippet; Add error handling by default; Provide integration instructions. Follow production-ready standards for every response.`,
+        icon: 'bx-terminal'
+    },
+    {
+        title: 'Fact Checker',
+        description: `When answering queries involving current events, statistics, or technical data, prioritize using Google Search to retrieve the latest information. For every factual claim, provide direct citations or links to the source. If data is conflicting, present the most recent or authoritative perspective first. If a topic requires multi-step investigation, utilize 'Deep Research' to synthesize a comprehensive report. For every request, whether it's travel advice, product recommendations, current events, or creative ideas—always prioritize Google Search to verify current availability, pricing, and factual accuracy. Do not rely on internal knowledge for data that changes over time (like store hours, flight prices, or news). For every factual claim or suggestion, provide a direct citation with a link to the source for immediate verification.`,
+        icon: 'bx-search-alt-2'
+    },
+    {
+        title: 'Deep Diver',
+        description: `When I ask you to explain a concept, ignore the 'tip of the iceberg' (surface-level definitions) and go straight to the 'bottom of the sea.' Provide a structural analysis by explaining how it is built and the foundational logic it rests upon. Do not oversimplify, include contradictions, edge cases, or academic debates. Explain the mechanisms that make the concept function, tracing the causality. Use an expert tone, assuming I have a baseline understanding and speak to me as a peer or a researcher. Use sub-headings to break down the 'layers' of the topic until you reach the most granular level possible.\n\nIf I ask you a question, answer using a 'Zoom-In' approach. Start with a very simple layperson analogy (Explain Like I'm 15). Then, immediately provide the highly technical, expert-level explanation of the exact same phenomenon. Conclude by linking the two together so I understand the bridge between intuition and technical reality.`,
+        icon: 'bx-water'
+    }
+];
+
+function renderInstructions() {
+    const container = document.getElementById('instructionsGrid');
+    if (!container) return;
+    container.innerHTML = '';
+
+    aiInstructions.forEach((instruction, index) => {
+        const card = document.createElement('div');
+        card.className = 'software-card';
+        card.style.animation = `fadeIn 0.5s ease-out ${index * 0.1}s forwards`;
+        card.style.opacity = '0';
+
+        card.innerHTML = `
+            <div class="card-icon-container">
+                <i class='bx ${instruction.icon}' style="font-size: 24px; color: var(--primary-accent);"></i>
+            </div>
+            <div class="card-content">
+                <h3 class="software-name">${instruction.title}</h3>
+                <p class="software-description" style="display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 1rem;" title="${instruction.description.replace(/"/g, '&quot;')}">${instruction.description}</p>
+                <div class="card-action" style="cursor: pointer;">
+                    <span class="copy-text-span">View Instruction</span>
+                    <i class='bx bx-expand-alt'></i>
+                </div>
+            </div>
+        `;
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+
+        card.addEventListener('click', () => {
+            openSnippetModal(instruction.title, instruction.description, instruction.icon);
+        });
+
+        const actionBtn = card.querySelector('.card-action');
+        actionBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevent card click
+            openSnippetModal(instruction.title, instruction.description, instruction.icon);
+        });
+
+        container.appendChild(card);
+    });
+}
+
 function getIconUrl(app) {
     return app.icon;
 }
@@ -427,25 +587,49 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', (e) => {
         renderCategories(e.target.value);
     });
+
+    // Snippet Modal Functionality
+    const snippetModal = document.getElementById('snippetModal');
+    const closeSnippetModal = document.querySelector('.close-modal');
+
+    if (closeSnippetModal && snippetModal) {
+        closeSnippetModal.addEventListener('click', () => {
+            snippetModal.classList.remove('show');
+        });
+        window.addEventListener('click', (e) => {
+            if (e.target === snippetModal) {
+                snippetModal.classList.remove('show');
+            }
+        });
+    }
+
     // Dynamic Updates
     updateDynamicUrls();
 
-    // Tips Navigation
+    // Tab Navigation
     const appsBtn = document.getElementById('appsBtn');
     const tipsBtn = document.getElementById('tipsBtn');
     const wallpapersBtn = document.getElementById('wallpapersBtn');
+    const snippetsBtn = document.getElementById('snippetsBtn');
+
     const categoriesContainer = document.getElementById('categoriesContainer');
     const tipsContainer = document.getElementById('tipsContainer');
     const wallpapersContainer = document.getElementById('wallpapersContainer');
+    const snippetsContainer = document.getElementById('snippetsContainer');
+
     const searchBar = document.querySelector('.search-bar-container');
 
     function showApps() {
         appsBtn.classList.add('active');
         tipsBtn.classList.remove('active');
         wallpapersBtn.classList.remove('active');
+        snippetsBtn.classList.remove('active');
+
         categoriesContainer.classList.remove('hidden');
         tipsContainer.classList.add('hidden');
         wallpapersContainer.classList.add('hidden');
+        snippetsContainer.classList.add('hidden');
+
         searchBar.classList.remove('hidden');
         window.location.hash = '';
     }
@@ -454,13 +638,16 @@ document.addEventListener('DOMContentLoaded', () => {
         tipsBtn.classList.add('active');
         appsBtn.classList.remove('active');
         wallpapersBtn.classList.remove('active');
+        snippetsBtn.classList.remove('active');
+
         tipsContainer.classList.remove('hidden');
         categoriesContainer.classList.add('hidden');
         wallpapersContainer.classList.add('hidden');
+        snippetsContainer.classList.add('hidden');
+
         searchBar.classList.add('hidden');
         window.location.hash = 'tips';
 
-        // Only render if empty to prevent re-animation
         if (document.getElementById('checklistItems').children.length === 0) {
             renderTips();
         }
@@ -470,33 +657,64 @@ document.addEventListener('DOMContentLoaded', () => {
         wallpapersBtn.classList.add('active');
         appsBtn.classList.remove('active');
         tipsBtn.classList.remove('active');
+        snippetsBtn.classList.remove('active');
+
         wallpapersContainer.classList.remove('hidden');
         categoriesContainer.classList.add('hidden');
         tipsContainer.classList.add('hidden');
+        snippetsContainer.classList.add('hidden');
+
         searchBar.classList.add('hidden');
         window.location.hash = 'wallpapers';
 
-        // Only fetch if empty to prevent re-fetching
-        if (document.getElementById('wallpapersGrid').children.length <= 1) { // 1 because of loading spinner
+        if (document.getElementById('wallpapersGrid').children.length <= 1) {
             fetchWallpapers();
+        }
+    }
+
+    function showSnippets() {
+        snippetsBtn.classList.add('active');
+        appsBtn.classList.remove('active');
+        tipsBtn.classList.remove('active');
+        wallpapersBtn.classList.remove('active');
+
+        snippetsContainer.classList.remove('hidden');
+        categoriesContainer.classList.add('hidden');
+        tipsContainer.classList.add('hidden');
+        wallpapersContainer.classList.add('hidden');
+
+        searchBar.classList.add('hidden');
+        window.location.hash = 'snippets';
+
+        if (document.getElementById('promptsGrid').children.length === 0) {
+            renderPrompts();
+        }
+        if (document.getElementById('instructionsGrid').children.length === 0) {
+            renderInstructions();
         }
     }
 
     appsBtn.addEventListener('click', showApps);
     tipsBtn.addEventListener('click', showTips);
     wallpapersBtn.addEventListener('click', showWallpapers);
+    if (snippetsBtn) snippetsBtn.addEventListener('click', showSnippets);
 
     // Initial Route
     if (window.location.hash === '#tips') {
         showTips();
     } else if (window.location.hash === '#wallpapers') {
         showWallpapers();
+    } else if (window.location.hash === '#snippets') {
+        showSnippets();
+    } else {
+        showApps();
     }
 
     // Handle back button
     window.addEventListener('hashchange', () => {
         if (window.location.hash === '#tips') showTips();
         else if (window.location.hash === '#wallpapers') showWallpapers();
+        else if (window.location.hash === '#snippets') showSnippets();
         else showApps();
     });
 
@@ -743,4 +961,33 @@ async function updateDynamicUrls() {
         'activators',
         asset => asset.name.toLowerCase().endsWith('.zip') && !asset.name.toLowerCase().includes('arm64')
     );
+}
+
+// Global scope modal logic
+function openSnippetModal(title, description, icon) {
+    const modal = document.getElementById('snippetModal');
+    if (!modal) return;
+
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalDescription').textContent = description;
+    document.getElementById('modalIcon').className = `bx ${icon}`;
+
+    const copyBtn = document.getElementById('modalCopyBtn');
+    const copyText = document.getElementById('modalCopyText');
+    copyText.textContent = 'Copy Context';
+
+    // Clear existing click listeners to prevent duplicates
+    const newBtn = copyBtn.cloneNode(true);
+    copyBtn.parentNode.replaceChild(newBtn, copyBtn);
+
+    newBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(description).then(() => {
+            document.getElementById('modalCopyText').textContent = 'Copied!';
+            setTimeout(() => {
+                document.getElementById('modalCopyText').textContent = 'Copy Context';
+            }, 2000);
+        });
+    });
+
+    modal.classList.add('show');
 }

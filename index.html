@@ -51,6 +51,7 @@
                     <button id="appsBtn" class="nav-btn active">Apps</button>
                     <button id="tipsBtn" class="nav-btn">Tips & Tweaks</button>
                     <button id="wallpapersBtn" class="nav-btn">Wallpapers</button>
+                    <button id="snippetsBtn" class="nav-btn">Snippets</button>
                 </nav>
 
                 <div class="search-bar-container">
@@ -88,6 +89,29 @@
             </div>
         </main>
 
+        <main id="snippetsContainer" class="hidden">
+            <div class="tips-header">
+                <h2>Snippets</h2>
+                <p>A hub for custom contexts, text blocks, and prompts to easily copy and share.</p>
+            </div>
+
+            <div class="category-header" style="justify-content: center; margin-bottom: 1.5rem;">
+                <i class='bx bx-slider-alt category-title-icon'></i>
+                <h3 class="category-title" style="font-size: 1.3rem;">Custom Instructions</h3>
+            </div>
+            <div id="instructionsGrid" class="software-grid">
+                <!-- Instructions will be injected here via JS -->
+            </div>
+
+            <div class="category-header" style="justify-content: center; margin-top: 2rem; margin-bottom: 1.5rem;">
+                <i class='bx bx-message-square-dots category-title-icon'></i>
+                <h3 class="category-title" style="font-size: 1.3rem;">Custom Prompts</h3>
+            </div>
+            <div id="promptsGrid" class="software-grid">
+                <!-- Prompts will be injected here via JS -->
+            </div>
+        </main>
+
         <footer class="main-footer">
             <p>Designed for the future by <a href="https://github.com/Adish08" target="_blank">Adish.</a></p>
             <p class="copyright">&copy; <span id="year"></span> Deskmate. All icons are property of their respective
@@ -97,6 +121,28 @@
                         src="https://hits.sh/github.com/Adish08/deskmate.svg?style=flat-square&color=60cdff&label=views" /></a>
             </p>
         </footer>
+    </div>
+
+    <!-- Snippet Modal -->
+    <div id="snippetModal" class="snippet-modal">
+        <div class="modal-content">
+            <span class="close-modal"><i class='bx bx-x'></i></span>
+            <div class="modal-header">
+                <i id="modalIcon" class='bx'
+                    style="font-size: 2rem; color: var(--primary-accent); margin-right: 1rem;"></i>
+                <h2 id="modalTitle">Title</h2>
+            </div>
+            <div class="modal-body">
+                <p id="modalDescription">Description</p>
+            </div>
+            <div class="modal-footer">
+                <button id="modalCopyBtn" class="nav-btn"
+                    style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: rgba(96, 205, 255, 0.1); border-color: var(--primary-accent); color: var(--primary-accent);">
+                    <span id="modalCopyText">Copy</span>
+                    <i class='bx bx-copy'></i>
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
