@@ -292,52 +292,6 @@ const aiPrompts = [
     }
 ];
 
-function renderPrompts() {
-    const container = document.getElementById('promptsGrid');
-    if (!container) return;
-    container.innerHTML = '';
-
-    aiPrompts.forEach((prompt, index) => {
-        const card = document.createElement('div');
-        card.className = 'software-card';
-        card.style.animation = `fadeIn 0.5s ease-out ${(index + aiInstructions.length) * 0.1}s forwards`;
-        card.style.opacity = '0';
-
-        card.innerHTML = `
-            <div class="card-icon-container">
-                <i class='bx ${prompt.icon}' style="font-size: 24px; color: var(--primary-accent);"></i>
-            </div>
-            <div class="card-content">
-                <h3 class="software-name">${prompt.title}</h3>
-                <p class="software-description" style="display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 1rem;" title="${prompt.description}">${prompt.description}</p>
-                <div class="card-action" style="cursor: pointer;">
-                    <span class="copy-text-span">View Prompt</span>
-                    <i class='bx bx-expand-alt'></i>
-                </div>
-            </div>
-        `;
-
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-
-        card.addEventListener('click', () => {
-            openSnippetModal(prompt.title, prompt.description, prompt.icon);
-        });
-
-        const actionBtn = card.querySelector('.card-action');
-        actionBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // prevent card click
-            openSnippetModal(prompt.title, prompt.description, prompt.icon);
-        });
-
-        container.appendChild(card);
-    });
-}
 
 const aiInstructions = [
     {
@@ -608,20 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCategories(e.target.value);
     });
 
-    // Snippet Modal Functionality
-    const snippetModal = document.getElementById('snippetModal');
-    const closeSnippetModal = document.querySelector('.close-modal');
 
-    if (closeSnippetModal && snippetModal) {
-        closeSnippetModal.addEventListener('click', () => {
-            snippetModal.classList.remove('show');
-        });
-        window.addEventListener('click', (e) => {
-            if (e.target === snippetModal) {
-                snippetModal.classList.remove('show');
-            }
-        });
-    }
 
     // Dynamic Updates
     updateDynamicUrls();
@@ -630,7 +571,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const appsBtn = document.getElementById('appsBtn');
     const tipsBtn = document.getElementById('tipsBtn');
     const wallpapersBtn = document.getElementById('wallpapersBtn');
-    const snippetsBtn = document.getElementById('snippetsBtn');
 
     const categoriesContainer = document.getElementById('categoriesContainer');
     const tipsContainer = document.getElementById('tipsContainer');
@@ -643,7 +583,6 @@ document.addEventListener('DOMContentLoaded', () => {
         appsBtn.classList.add('active');
         tipsBtn.classList.remove('active');
         wallpapersBtn.classList.remove('active');
-        snippetsBtn.classList.remove('active');
 
         categoriesContainer.classList.remove('hidden');
         tipsContainer.classList.add('hidden');
@@ -658,7 +597,6 @@ document.addEventListener('DOMContentLoaded', () => {
         tipsBtn.classList.add('active');
         appsBtn.classList.remove('active');
         wallpapersBtn.classList.remove('active');
-        snippetsBtn.classList.remove('active');
 
         tipsContainer.classList.remove('hidden');
         categoriesContainer.classList.add('hidden');
@@ -677,7 +615,6 @@ document.addEventListener('DOMContentLoaded', () => {
         wallpapersBtn.classList.add('active');
         appsBtn.classList.remove('active');
         tipsBtn.classList.remove('active');
-        snippetsBtn.classList.remove('active');
 
         wallpapersContainer.classList.remove('hidden');
         categoriesContainer.classList.add('hidden');
@@ -692,40 +629,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function showSnippets() {
-        snippetsBtn.classList.add('active');
-        appsBtn.classList.remove('active');
-        tipsBtn.classList.remove('active');
-        wallpapersBtn.classList.remove('active');
-
-        snippetsContainer.classList.remove('hidden');
-        categoriesContainer.classList.add('hidden');
-        tipsContainer.classList.add('hidden');
-        wallpapersContainer.classList.add('hidden');
-
-        searchBar.classList.add('hidden');
-        window.location.hash = 'snippets';
-
-        if (document.getElementById('promptsGrid').children.length === 0) {
-            renderPrompts();
-        }
-        if (document.getElementById('instructionsGrid').children.length === 0) {
-            renderInstructions();
-        }
-    }
 
     appsBtn.addEventListener('click', showApps);
     tipsBtn.addEventListener('click', showTips);
     wallpapersBtn.addEventListener('click', showWallpapers);
-    if (snippetsBtn) snippetsBtn.addEventListener('click', showSnippets);
 
     // Initial Route
     if (window.location.hash === '#tips') {
         showTips();
     } else if (window.location.hash === '#wallpapers') {
         showWallpapers();
-    } else if (window.location.hash === '#snippets') {
-        showSnippets();
     } else {
         showApps();
     }
@@ -734,7 +647,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('hashchange', () => {
         if (window.location.hash === '#tips') showTips();
         else if (window.location.hash === '#wallpapers') showWallpapers();
-        else if (window.location.hash === '#snippets') showSnippets();
         else showApps();
     });
 
