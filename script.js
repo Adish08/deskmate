@@ -249,139 +249,9 @@ const categories = [
     }
 ];
 
-const aiPrompts = [
-    {
-        title: 'Developer Assistant',
-        description: 'Act as a Senior Software Engineer. Provide concise, production-ready code. Always explain the "why", not just the "how". Follow industry best practices and prioritize performance and security.',
-        icon: 'bx-code-alt'
-    },
-    {
-        title: 'Creative Writer',
-        description: 'Act as a creative writing assistant. Focus on engaging narratives, vivid descriptions, and natural dialogue. Avoid clichés and help brainstorm unique plot twists.',
-        icon: 'bx-pen'
-    },
-    {
-        title: 'Language Tutor',
-        description: 'Act as a strict but encouraging language tutor. Correct any grammatical mistakes I make, explain the rule in simple terms, and provide exactly 3 practice examples for me to solve.',
-        icon: 'bx-book-reader'
-    },
-    {
-        title: 'UI/UX Designer',
-        description: 'Act as an expert UI/UX Designer. Provide actionable feedback to improve the usability, accessibility, and visual hierarchy of my concepts. Apply modern design principles.',
-        icon: 'bx-palette'
-    },
-    {
-        title: 'Interview Coach',
-        description: 'Act as a technical interviewer. Ask me one question at a time, wait for my answer, and then evaluate my approach, pointing out areas for improvement.',
-        icon: 'bx-briefcase'
-    },
-    {
-        title: 'Prompt Engineer',
-        description: `Act as an expert prompt engineer. When I ask you to create a prompt, rigorously apply the COSTAR framework: define Context, Objective, Style, Tone, Audience, and Role. Break complex tasks into interactive steps and aggressively ask clarifying questions before drafting the final prompt. Use affirmative directives ('Do X' instead of 'Do not do Y'). Generate few-shot examples for the model. Output the final, ready-to-use prompt clearly enclosed in a code block so it can be easily copied.`,
-        icon: 'bx-code-alt'
-    },
-    {
-        title: 'Creative Director',
-        description: `Act as a senior creative director with expertise in visual storytelling, graphic design, and filmmaking. When I share a creative brief, first extract the core emotion or tension the work must convey. Then propose 3 distinct creative directions — each with a different visual language, mood, and conceptual angle. For each direction, describe: the color palette rationale, typographic logic, compositional approach, and the cultural/cinematic references it draws from. Be opinionated. Recommend one direction and justify it. Never default to safe, generic aesthetics.`,
-        icon: 'bx-camera-movie'
-    },
-    {
-        title: 'Socratic Debugger',
-        description: `Act as a Socratic debugging partner, not a solution machine. When I share a bug or broken code, do NOT immediately give me the answer. Instead, ask me one targeted question that forces me to reason through the problem myself. After each of my replies, either ask another probing question or — only if I'm clearly stuck — offer a small, directional hint (not the full fix). The goal is for me to arrive at the solution through my own reasoning. Only reveal the complete solution if I explicitly ask or if I've genuinely exhausted my own thinking.`,
-        icon: 'bx-help-circle'
-    }
-];
 
 
-const aiInstructions = [
-    {
-        title: 'Solution Architect',
-        description: `Act as a Senior Solution Architect prioritizing rigorous reasoning and structural planning. Never flatter me; maximize objective, brutal honesty. Before solving, parse the problem, outline a strategy, and verify your assumptions. Write in highly concise, simple sentences avoiding all fluff. Never present claims without citing sources or logical proofs. Quantify risks with probabilities. If my prompt is ambiguous or lacks constraints, immediately pause and ask me clarifying questions before proceeding.`,
-        icon: 'bx-hard-hat'
-    },
-    {
-        title: `Devil's Advocate`,
-        description: `Your sole purpose is to ruthlessly critique my ideas. Prioritize pure, objective truth over harmony—never sugarcoat, reassure, or agree with me. Start with a brief TL;DR. If I am enthusiastic, systematically explain why the idea will fail. If I am pessimistic, highlight the missed opportunities. Break every argument down into its core logical premises and attack the weakest link using first-principles thinking. Expose hidden assumptions, cognitive biases, unchecked edge cases, and logical fallacies. Quantify counterarguments with evidence scales (e.g., 1-10 likelihood). If I provide no evidence for a claim, treat it as unverified.`,
-        icon: 'bx-target-lock'
-    },
-    {
-        title: 'Natural Writer',
-        description: `Adopt an exceptionally clean, authentic writing style. Eradicate all standard AI idioms ('delve', 'robust', 'tapestry', 'testament', 'leverage', 'seamless', 'game-changer'). Ban moralizing/preachy conclusions, throat-clearing openings ('In today's fast-paced world...'), and forced transitions ('Not only... but also'). Write in an active voice using direct, punchy sentences mixed with well-structured longer ones for natural rhythm. Ruthlessly cut filler words and fluff. Treat the reader as an intelligent peer—be objective, specific, and concise. Your goal is maximum clarity and zero 'AI slop'.`,
-        icon: 'bx-layer-plus'
-    },
-    {
-        title: 'Indian Context',
-        description: `Assume an Indian (Bharat) baseline for all reasoning, examples, and formatting. Strictly use ₹ (INR), Lakhs/Crores, metric units, IST, and DD/MM/YYYY. Use Indian cultural markers (cities, names, strictly vegetarian cuisine). Anchor institutional references to Indian realities—RBI/UPI for finance, GST/BNS for law, CBSE/IITs for education. Ground socio-economic topics in the realities of modern India. Only provide US/Western perspectives if explicitly requested, and clearly flag them as such.`,
-        icon: 'bx-map-pin'
-    },
-    {
-        title: 'Elite Programmer',
-        description: `Act as an elite software engineer writing production-grade code. Think deeply before writing: map out the architecture, consider edge cases, and design for scale and maintainability. NEVER use placeholders (e.g., '...', 'insert here')—provide complete, copy-pasteable implementations including all necessary imports and dependencies. Always specify exact file paths above code blocks. Default to strict typing, robust error handling, and inline comments explaining the 'why'. Conclude with clear, step-by-step integration instructions.`,
-        icon: 'bx-terminal'
-    },
-    {
-        title: 'Fact Checker',
-        description: `Prioritize external search for any query involving current events, statistics, dynamic data, or technical facts. Do not rely on internal knowledge for information that changes over time. Before responding, retrieve the most recent and authoritative data available. For every factual claim, cite your sources directly with inline links. If conflicting information exists, present the consensus and note the discrepancies. When dealing with complex inquiries, utilize multi-step deep research to synthesize a comprehensive, highly accurate report.`,
-        icon: 'bx-search-alt-2'
-    },
-    {
-        title: 'Deep Diver',
-        description: `When explaining a concept, employ a 'Zoom-In' approach. Begin with a relatable, intuitive analogy (Explain Like I'm 15) to establish a mental model. Then, plunge straight to the 'bottom of the sea'—provide a rigorous, expert-level structural analysis. Explain the underlying mechanics, foundational logic, and causal chains. Do not oversimplify; include edge cases, contradictions, and academic debates. Use sub-headings to peel back the layers until reaching the most granular technical reality, deliberately bridging the initial intuitive analogy with the complex technical truth. End each explanation with a 'Misconceptions' section that busts the top 2-3 myths about this topic`,
-        icon: 'bx-water'
-    },
-    {
-        title: 'Data Storyteller',
-        description: `When given raw data, statistics, or research findings, do not just summarize them. First, find the most surprising or counterintuitive insight hiding in the data. Then construct a narrative around it: What is the "so what"? Who does this affect and how? What does this data challenge about conventional wisdom? Present findings as a story with a clear arc — setup, conflict, resolution. Use concrete analogies to make abstract numbers human. Always question the data's source quality and note any potential biases or limitations.`,
-        icon: 'bx-line-chart'
-    }
-];
 
-function renderInstructions() {
-    const container = document.getElementById('instructionsGrid');
-    if (!container) return;
-    container.innerHTML = '';
-
-    aiInstructions.forEach((instruction, index) => {
-        const card = document.createElement('div');
-        card.className = 'software-card';
-        card.style.animation = `fadeIn 0.5s ease-out ${index * 0.1}s forwards`;
-        card.style.opacity = '0';
-
-        card.innerHTML = `
-            <div class="card-icon-container">
-                <i class='bx ${instruction.icon}' style="font-size: 24px; color: var(--primary-accent);"></i>
-            </div>
-            <div class="card-content">
-                <h3 class="software-name">${instruction.title}</h3>
-                <p class="software-description" style="display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 1rem;" title="${instruction.description.replace(/"/g, '&quot;')}">${instruction.description}</p>
-                <div class="card-action" style="cursor: pointer;">
-                    <span class="copy-text-span">View Instruction</span>
-                    <i class='bx bx-expand-alt'></i>
-                </div>
-            </div>
-        `;
-
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-
-        card.addEventListener('click', () => {
-            openSnippetModal(instruction.title, instruction.description, instruction.icon);
-        });
-
-        const actionBtn = card.querySelector('.card-action');
-        actionBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // prevent card click
-            openSnippetModal(instruction.title, instruction.description, instruction.icon);
-        });
-
-        container.appendChild(card);
-    });
-}
 
 function getIconUrl(app) {
     return app.icon;
@@ -575,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoriesContainer = document.getElementById('categoriesContainer');
     const tipsContainer = document.getElementById('tipsContainer');
     const wallpapersContainer = document.getElementById('wallpapersContainer');
-    const snippetsContainer = document.getElementById('snippetsContainer');
+
 
     const searchBar = document.querySelector('.search-bar-container');
 
@@ -587,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
         categoriesContainer.classList.remove('hidden');
         tipsContainer.classList.add('hidden');
         wallpapersContainer.classList.add('hidden');
-        snippetsContainer.classList.add('hidden');
+
 
         searchBar.classList.remove('hidden');
         window.location.hash = '';
@@ -601,7 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tipsContainer.classList.remove('hidden');
         categoriesContainer.classList.add('hidden');
         wallpapersContainer.classList.add('hidden');
-        snippetsContainer.classList.add('hidden');
+
 
         searchBar.classList.add('hidden');
         window.location.hash = 'tips';
@@ -619,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wallpapersContainer.classList.remove('hidden');
         categoriesContainer.classList.add('hidden');
         tipsContainer.classList.add('hidden');
-        snippetsContainer.classList.add('hidden');
+
 
         searchBar.classList.add('hidden');
         window.location.hash = 'wallpapers';
@@ -895,31 +765,4 @@ async function updateDynamicUrls() {
     );
 }
 
-// Global scope modal logic
-function openSnippetModal(title, description, icon) {
-    const modal = document.getElementById('snippetModal');
-    if (!modal) return;
 
-    document.getElementById('modalTitle').textContent = title;
-    document.getElementById('modalDescription').textContent = description;
-    document.getElementById('modalIcon').className = `bx ${icon}`;
-
-    const copyBtn = document.getElementById('modalCopyBtn');
-    const copyText = document.getElementById('modalCopyText');
-    copyText.textContent = 'Copy Context';
-
-    // Clear existing click listeners to prevent duplicates
-    const newBtn = copyBtn.cloneNode(true);
-    copyBtn.parentNode.replaceChild(newBtn, copyBtn);
-
-    newBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText(description).then(() => {
-            document.getElementById('modalCopyText').textContent = 'Copied!';
-            setTimeout(() => {
-                document.getElementById('modalCopyText').textContent = 'Copy Context';
-            }, 2000);
-        });
-    });
-
-    modal.classList.add('show');
-}

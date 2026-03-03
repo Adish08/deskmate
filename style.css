@@ -19,6 +19,24 @@
     --transition-smooth: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+@keyframes aiBadgeGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(96, 205, 255, 0.1), inset 0 0 5px rgba(255, 255, 255, 0.02);
+        border-color: rgba(96, 205, 255, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(96, 205, 255, 0.25), inset 0 0 10px rgba(96, 205, 255, 0.05);
+        border-color: rgba(96, 205, 255, 0.5);
+    }
+}
+
+.ai-callout-badge {
+    animation: aiBadgeGlow 3s infinite ease-in-out;
+}
+
 * {
     margin: 0;
     padding: 0;
