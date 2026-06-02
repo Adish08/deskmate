@@ -56,6 +56,12 @@ const categories = [
                 icon: 'https://winhance.net/images/winhance-rocket.png'
             },
             {
+                name: 'RDPWrap',
+                description: 'Enable RDP Host & concurrent sessions on Windows Home',
+                url: 'https://github.com/sebaxakerhtc/rdpwrap/releases/latest',
+                icon: 'https://img.icons8.com/color/96/remote-desktop.png'
+            },
+            {
                 name: 'CTT WinUtil',
                 description: 'Ultimate Windows Toolbox',
                 url: '#',
@@ -82,6 +88,12 @@ const categories = [
                 description: 'Fast PDF Reader. Or <a href="https://www.sumatrapdfreader.org/download-free-pdf-viewer" target="_blank" style="color:var(--primary-accent)">Sumatra?</a>',
                 url: 'https://apps.microsoft.com/detail/xpfcg5nrkxqpkt',
                 icon: 'https://img.icons8.com/color/96/foxit-reader.png',
+            },
+            {
+                name: 'FxSound',
+                description: 'Boost volume and sound quality',
+                url: 'https://apps.microsoft.com/detail/xp8jk4tbq03lz4',
+                icon: 'https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxniKPzBavToY5vvDU2aE3XG_1pF08L6.bdkd2NLYFn1DNNql55xq66ar1ueHHH0sjKZF816tJiLZEC1XsD9fC_8-&format=source'
             },
             {
                 name: 'Brother Driver',
@@ -725,6 +737,13 @@ async function updateDynamicUrls() {
         asset => asset.name.toLowerCase().includes('x64_installer.exe')
     );
 
+    // 3. RDPWrap (Utilities) -> Installer exe
+    await updateAppUrl(
+        'sebaxakerhtc/rdpwrap',
+        'RDPWrap',
+        'utilities',
+        asset => asset.name === 'RDPW_Installer.exe'
+    );
 
     // 4. BCUninstaller (System) -> Setup exe
     await updateAppUrl(
