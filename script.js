@@ -114,6 +114,12 @@ const categories = [
                 icon: 'https://store-images.s-microsoft.com/image/apps.29528.14318846362781107.7d9233b2-521d-4dc6-ad8a-d37f21fa0592.7d0684d0-1145-4c14-b3ed-f0a5729505f6'
             },
             {
+                name: 'RevPDF',
+                description: 'Fast, native & privacy-focused offline PDF editor',
+                url: 'https://github.com/Pawandeep-prog/revpdf-release/releases/latest',
+                icon: 'https://raw.githubusercontent.com/Pawandeep-prog/revpdf-release/main/com.revpdf.editor.png'
+            },
+            {
                 name: 'FontBase',
                 description: 'Font Manager',
                 url: 'https://fontba.se/downloads/windows',
@@ -312,7 +318,8 @@ function renderCategories(filterText = '') {
                 const primUrl = getIconUrl(app);
                 const fallbackUrl = app.fallback || `https://ui-avatars.com/api/?name=${encodeURIComponent(app.name)}&background=202020&color=60cdff&size=128&font-size=0.5`;
                 const isCopyAction = app.action === 'copy';
-                const cardId = `card-${category.id}-${index}`;
+                const appSlug = app.name.replace(/\s+/g, '-').toLowerCase();
+                const cardId = `card-${category.id}-${appSlug}`;
                 const actionText = isCopyAction ? 'Copy' : 'Download';
                 const actionIcon = isCopyAction ? 'bx-copy' : 'bx-right-arrow-alt';
                 const arrowClass = isCopyAction ? '' : 'download-arrow';
@@ -349,7 +356,8 @@ function renderCategories(filterText = '') {
 
             // Add Event Listeners
             filteredApps.forEach((app, index) => {
-                const cardId = `card-${category.id}-${index}`;
+                const appSlug = app.name.replace(/\s+/g, '-').toLowerCase();
+                const cardId = `card-${category.id}-${appSlug}`;
                 const cardElement = document.getElementById(cardId);
 
                 if (cardElement) {
@@ -690,8 +698,8 @@ async function updateDynamicUrls() {
                     app.url = asset.browser_download_url;
 
                     // Update DOM
-                    const appIndex = category.apps.indexOf(app);
-                    const cardId = `card-${categoryId}-${appIndex}`;
+                    const appSlug = appName.replace(/\s+/g, '-').toLowerCase();
+                    const cardId = `card-${categoryId}-${appSlug}`;
                     const cardElement = document.getElementById(cardId);
 
                     if (cardElement) {
@@ -781,6 +789,17 @@ async function updateDynamicUrls() {
         'Office Installer',
         'activators',
         asset => asset.name.toLowerCase().endsWith('.zip') && !asset.name.toLowerCase().includes('arm64')
+    );
+
+    // 8. RevPDF (Media) -> Windows exe
+    await updateAppUrl(
+        'Pawandeep-prog/revpdf-release',
+        'RevPDF',
+        'media',
+        asset => {
+            const name = asset.name.toLowerCase();
+            return name.includes('win') && name.endsWith('.exe');
+        }
     );
 }
 
