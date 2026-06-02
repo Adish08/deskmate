@@ -380,13 +380,34 @@ function renderCategories(filterText = '') {
                         // Clicking this link will just work.
                     });
 
-                    // 3. Handle Spotlight Effect (Mouse Move)
+                    // 3. Handle Spotlight & Parallax Tilt Effect (Mouse Move)
                     cardElement.addEventListener('mousemove', (e) => {
                         const rect = cardElement.getBoundingClientRect();
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
+                        
                         cardElement.style.setProperty('--mouse-x', `${x}px`);
                         cardElement.style.setProperty('--mouse-y', `${y}px`);
+
+                        // Calculate tilt based on cursor position relative to card center
+                        const cardWidth = rect.width;
+                        const cardHeight = rect.height;
+                        const centerX = rect.left + cardWidth / 2;
+                        const centerY = rect.top + cardHeight / 2;
+                        const mouseXFromCenter = e.clientX - centerX;
+                        const mouseYFromCenter = e.clientY - centerY;
+                        
+                        const maxTilt = 8; // Max tilt angle in degrees
+                        const tiltX = -(mouseYFromCenter / (cardHeight / 2)) * maxTilt;
+                        const tiltY = (mouseXFromCenter / (cardWidth / 2)) * maxTilt;
+
+                        cardElement.classList.add('is-tilting');
+                        cardElement.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateY(-4px)`;
+                    });
+
+                    cardElement.addEventListener('mouseleave', () => {
+                        cardElement.classList.remove('is-tilting');
+                        cardElement.style.transform = '';
                     });
                 }
             });
